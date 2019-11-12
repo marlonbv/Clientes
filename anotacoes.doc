@@ -1,0 +1,28 @@
+//*******************************************INÍCIO EMPREENDIMENTO***********************************************
+if ($condicaoEmpreendimentoOK) {
+    $page_nav['empreendimento'] = array("title" => "Empreendimentos", "icon" => "fa-pencil-square-o");
+    $page_nav['empreendimento']['sub'] = array();
+    if (in_array('EMPREENDIMENTO_ACESSAR', $arrayPermissao, true)) {
+        $page_nav['empreendimento']['sub'] += array("empreendimento" => array("title" => "Empreendimento", "url" => APP_URL . "/empreendimentoFiltro.php"));
+    }
+}
+//*******************************************FIM EMPREENDIMENTO**************************************************
+
+//*******************************************INÍCIO BLOCO********************************************************
+if ($condicaoEmpreendimentoOK) {
+    $page_nav['empreendimento'] = array("title" => "Empreendimentos", "icon" => "fa-pencil-square-o");
+    $page_nav['empreendimento']['sub'] = array();
+ if (in_array('BLOCO_ACESSAR', $arrayPermissao, true)) {
+        $page_nav['bloco']['sub'] += array("bloco" => array("title" => "Bloco", "url" => APP_URL . "/blocoFiltro.php"));
+    }
+//*******************************************FIM BLOCO************************************************************
+
+//*******************************************INÍCIO CADASTRO UNIDADE**********************************************
+    if ($condicaoEmpreendimentoOK) {
+    $page_nav['empreendimento'] = array("title" => "Empreendimentos", "icon" => "fa-pencil-square-o");
+    $page_nav['empreendimento']['sub'] = array();
+    if (in_array('BLOCO_ACESSAR', $arrayPermissao, true)) {
+        $page_nav['cadUnidade']['sub'] += array("cadUnidade" => array("title" => "Cadastro Unidade", "url" => APP_URL . "/CadUnidadeFiltro.php"));
+    }
+    
+//*******************************************FIM CADASTRO UNIDADE**************************************************
