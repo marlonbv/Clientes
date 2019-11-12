@@ -55,12 +55,7 @@ function recuperaCPF(id) {
                 return;
             } else {
                 data = data.replace(/failed/g, '');
-                
-                if(data !== "" ){
-                $('#dlgSimpleConfirmaCPF').dialog('open');
-                }
-                
-                return;
+             
             }
         },
         error: function (xhr, er) {

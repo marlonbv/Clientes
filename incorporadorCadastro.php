@@ -88,14 +88,14 @@ include("inc/nav.php");
                                                         <div class="row">
                                                                
                                                             <section class="col col-8">
-                                                                <label class="label">Razão Social</label>
+                                                                <label class="label" for="razaoSocial">Razão Social</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="razaoSocial" name="razaoSocial" class="required" required/>
                                                                 </label>       
                                                             </section>  
                                                             
                                                             <section class="col col-4">
-                                                                <label class="label">Tipo de Pessoa</label>                                                                       
+                                                                <label class="label" for="tipoPessoa">Tipo de Pessoa</label>                                                                       
                                                                 <div class="inline-group">
                                                                     <label class="radio">
                                                                         <input type="radio" id="tipoPessoa" name="tipoPessoa" value="f"><i></i>Física
@@ -109,21 +109,21 @@ include("inc/nav.php");
                                                         
                                                         <div class="row">
                                                             <section class="col col-4">
-                                                                <label class="label">CNPJ/CPF</label>
+                                                                <label class="label" for="cnpjCpf">CNPJ/CPF</label>
                                                                 <label class="input">
                                                                     <input id="cnpjCpf" name="cnpjCpf" type="text" value="">
                                                                 </label>
                                                             </section> 
                                                             
                                                             <section class="col col-4">
-                                                                <label class="label">Insc.municipal</label>
+                                                                <label class="label" for="inscMunicipal">Insc.municipal</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="inscMunicipal" name="inscMunicipal"/>
                                                                 </label>       
                                                             </section> 
                                                             
                                                             <section class="col col-4">
-                                                                <label class="label">Insc.estadual</label>
+                                                                <label class="label" for="inscEstadual">Insc.estadual</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="inscEstadual" name="inscEstadual"/>
                                                                 </label>       
@@ -132,21 +132,21 @@ include("inc/nav.php");
                                                         
                                                         <div class="row">
                                                              <section class="col col-4">
-                                                                <label class="label">Contato</label>
+                                                                <label class="label" for="contato">Contato</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="contato" name="contato"/>
                                                                 </label>       
                                                             </section>  
                                                             
                                                             <section class="col col-4">
-                                                                <label class="label">Cargo</label>
+                                                                <label class="label" for="cargo">Cargo</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="cargo" name="cargo"/>
                                                                 </label>       
                                                             </section>
                                                             
                                                             <section class="col col-4">
-                                                                <label class="label">Telefone</label>
+                                                                <label class="label" for="telefone">Telefone</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="telefone" name="telefone"/>
                                                                 </label>       
@@ -181,22 +181,22 @@ include("inc/nav.php");
                                                             <input id="codigo" name="codigo" type="hidden">
                                                             
                                                             <section class="col col-3">
-                                                                <label class="label">Cep</label>
-                                                                <label class="input"> <!-- add onchange="buscaCep()" -->
-                                                                    <input id="cep"  name="cep" type="text" data-mask="99999-999" data-mask-placeholder="X" value=""  class="required" required >
+                                                                <label class="label" for="cep">Cep</label>
+                                                                <label class="input">  
+                                                                    <input id="cep"  name="cep" type="text" value="" class="required" required onchange="buscaCep()">
                                                                 </label>
                                                             </section>
 
                                                         </div>  
                                                         <div class="row">
                                                             <section class="col col-3">
-                                                                <label class="label">Tipo Logradouro</label>
+                                                                <label class="label" for="tipoLogradouro">Tipo Logradouro</label>
                                                                 <label class="input">
                                                                     <input id="tipoLogradouro"  name="tipoLogradouro" maxlength="15" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-9">
-                                                                <label class="label">Logradouro</label>
+                                                                <label class="label" for="logradouro">Logradouro</label>
                                                                 <label class="input">
                                                                     <input id="logradouro"  name="logradouro" maxlength="150" type="text" value="" class="required" required>
                                                                 </label>
@@ -204,13 +204,13 @@ include("inc/nav.php");
                                                         </div>                                                                
                                                         <div class="row">
                                                             <section class="col col-3">
-                                                                <label class="label">Número</label>
+                                                                <label class="label" for="numero">Número</label>
                                                                 <label class="input">
                                                                     <input id="numero"  name="numero" maxlength="20" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-9">
-                                                                <label class="label">Complemento</label>
+                                                                <label class="label" for="complemento">Complemento</label>
                                                                 <label class="input">
                                                                     <input id="complemento"  name="complemento" maxlength="50" type="text" value="" class="required" required>
                                                                 </label>
@@ -218,15 +218,17 @@ include("inc/nav.php");
                                                         </div>
                                                         <div class="row">
                                                             <section class="col col-4">
-                                                                <label class="label">Bairro</label>
+                                                                <label class="label" for="bairro">Bairro</label>
                                                                 <label class="input">
                                                                     <input id="bairro"  name="bairro" maxlength="30" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-4">
-                                                                <label class="label">UF</label>
+                                                                <label class="label" for="unidadeFederacao">UF</label>
                                                                 <label class="select">
                                                                     <select id="unidadeFederacao" name="unidadeFederacao" class="required" required> 
+                                                                       
+                                                                        <option></option>
                                                                         <?php
                                                                         $reposit = new reposit();
                                                                         $tabela = "unidadeFederacao";
@@ -243,7 +245,7 @@ include("inc/nav.php");
                                                                 </label>                                                                                                                                
                                                             </section>
                                                             <section class="col col-4">
-                                                                <label class="label">Cidade</label>
+                                                                <label class="label" for="cidade">Cidade</label>
                                                                 <label class="input">
                                                                     <input id="cidade"  name="cidade" maxlength="30" type="text" value="" class="required" required>
                                                                 </label>
@@ -352,6 +354,26 @@ include("inc/scripts.php");
             }
         }));
          
+         
+        //Aplicando máscaras:
+        //CEP
+        $('#cep').mask('999999-999', {placeholder: "_"});
+        
+        //CNPJ/CPF
+        $("input[id*='cnpjCpf']").inputmask({
+        mask: ['999.999.999-99', '99.999.999/9999-99'],
+        keepStatic: true
+        });
+        
+        //Telefone
+        $("input[id*='telefone']").inputmask({
+        mask: ['(99) 9999-9999', '(99) 99999-9999'],
+        keepStatic: true
+        }); 
+         
+         
+         
+         //Verificação de CPF/CNPJ
          $("#cnpjCpf").on("change", function () {
          var val = $("#cnpjCpf").val();
          
@@ -474,11 +496,7 @@ include("inc/scripts.php");
                 recuperaRazaoSocial(idd);
           
         });
-        
-        $("input[id*='cnpjCpf']").inputmask({
-        mask: ['999.999.999-99', '99.999.999/9999-99'],
-        keepStatic: true
-        });
+         
         
        $('#descricao').bind('keypress', apenasLetras);
         carregaPagina();
@@ -597,6 +615,12 @@ include("inc/scripts.php");
     var pattern = new RegExp(/[a-zåäöëïüãõçÇãõáÁàÀéÉèÈíÍìÌóÓòÒúÚùÙ ]/i);
     return pattern.test(value);
     }
+    
+    //Função de recuperar dados baseados no cep inserido.
+    function buscaCep(){
+        var cep = $("#cep").val();
+        recuperaCep(cep);
+    } 
     
 </script>
     

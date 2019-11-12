@@ -112,6 +112,49 @@ function recuperaIncorporador(id) {
     return;
 }
 
+function recuperaCep(cep) {
+    $.ajax({
+        url: 'js/sqlscope.php', //caminho do arquivo a ser executado
+        dataType: 'html', //tipo do retorno
+        type: 'post', //metodo de envio
+        data: {funcao: 'recuperaCep', cep: cep}, //valores enviados ao script     
+        beforeSend: function () {
+            //função chamada antes de realizar o ajax
+        },
+        complete: function () {
+            //função executada depois de terminar o ajax
+        },
+        success: function (data, textStatus) {
+               if (textStatus !== 0) {
+                var piece = data.split("#");
+                var mensagem = piece[1];
+                var out = piece[1];
+                piece = out.split("^");
+                var logradouro = piece[0].trim();
+                var bairro = piece[1].trim();
+                var cidade = piece[2].trim();
+                var uf = piece[3].trim();
+
+                $("#logradouro").val(logradouro);
+                $("#bairro").val(bairro);
+                $("#cidade").val(cidade);
+                $("#unidadeFederacao").val(uf);
+
+
+                return '';
+            } else {
+                smartAlert("Sucesso", "Operação realizada com sucesso!", "success");
+
+            }
+        },
+        error: function (xhr, er) {
+            //tratamento de erro
+        }
+    });
+
+    return;
+}
+
 function recuperaRazaoSocial(id) {
     $.ajax({
         url: 'js/sqlscopeIncorporador.php', //caminho do arquivo a ser executado
