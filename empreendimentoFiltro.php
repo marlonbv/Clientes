@@ -87,13 +87,13 @@ include("inc/ribbon.php");
                                                     <fieldset>
                                                         <div class="row ">
                                                             <section class="col col-6">
-                                                                <label class="label">Empreendimento</label>
+                                                                <label class="label" for="empreendimento">Empreendimento</label>
                                                                 <label class="input">
                                                                     <input id="empreendimento" maxlength="50" name="empreendimento" type="text" value="" autocomplete="off">
                                                                 </label>
                                                             </section> 
                                                             <section class="col col-5">
-                                                                <label class="label">Incorporador Gestor</label>
+                                                                <label class="label" for="incorporador">Incorporador Gestor</label>
                                                                 <label class="input">
                                                                     <input id="incorporador" maxlength="50" name="incorporador" type="text" value="" autocomplete="off">
                                                                 </label>

@@ -87,28 +87,28 @@ include("inc/nav.php");
                                                         <div class="row">
                                                             
                                                             <section class="col col-8">
-                                                                <label class="label">Nome do empreendimento:</label>
+                                                                <label class="label" for="nomeEmprendi">Nome do empreendimento</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="nomeEmprendi" name="nomeEmprendi" class="required" required/>
                                                                 </label>       
                                                             </section>  
                                                             
                                                             <section class="col col-4">
-                                                                <label class="label">Inscrição municipal:</label>
+                                                                <label class="label" for="insMunicipal">Inscrição municipal</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="insMunicipal" name="insMunicipal"/>
                                                                 </label>       
                                                             </section> 
                                                             
                                                             <section class="col col-8">
-                                                                <label class="label">Engenheiro responsável:</label>
+                                                                <label class="label" for="engResponsavel">Engenheiro responsável</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="engResponsavel" name="engResponsavel"/>
                                                                 </label>       
                                                             </section> 
                                                             
                                                             <section class="col col-4">
-                                                                <label class="label">Incorporador gestor:</label> 
+                                                                <label class="label" for="incorGestor">Incorporador gestor</label> 
                                                                 <label class="select">
                                                                     <select id="incorGestor" name="incorGestor" class="required" required>
                                                                         <option></option>
@@ -129,28 +129,28 @@ include("inc/nav.php");
                                                             </section> 
                                                             
                                                             <section class="col col-8">
-                                                                <label class="label">Observação:</label>
+                                                                <label class="label" for="observacao">Observação</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="observacao" name="observacao"/>
                                                                 </label>       
                                                             </section> 
                                                             
                                                             <section class="col col-1">
-                                                                <label class="label">Blocos:</label>
+                                                                <label class="label" for="blocos">Blocos</label>
                                                                 <label class="input">
                                                                     <input id="blocos" name="blocos" type="text" class="readonly" readonly>
                                                                 </label>
                                                             </section>
                                                             
                                                             <section class="col col-1">
-                                                                <label class="label">Unidade:</label>
+                                                                <label class="label" for="unidade">Unidade</label>
                                                                 <label class="input">
                                                                     <input id="unidade" name="unidade" type="text" class="readonly" readonly>
                                                                 </label>
                                                             </section>
                                                             
                                                             <section class="col col-1">
-                                                                <label class="label">Vinculadas:</label>
+                                                                <label class="label" for="vinculadas">Vinculadas</label>
                                                                 <label class="input">
                                                                     <input id="vinculadas" name="vinculadas" type="text" class="readonly" readonly>
                                                                 </label>
@@ -184,7 +184,7 @@ include("inc/nav.php");
 
                                                         <div class="row">
                                                             <section class="col col-3">
-                                                                <label class="label">Cep</label>
+                                                                <label class="label" for="cep">Cep</label>
                                                                 <label class="input"> <!-- add onchange="buscaCep()" -->
                                                                     <input id="cep"  name="cep" type="text" data-mask="99999-999" data-mask-placeholder="X" value=""  class="required" required onchange="buscaCep()">
                                                                 </label>
@@ -193,13 +193,13 @@ include("inc/nav.php");
                                                         </div>  
                                                         <div class="row">
                                                             <section class="col col-3">
-                                                                <label class="label">Tipo Logradouro</label>
+                                                                <label class="label" for="tipoLogradouro">Tipo Logradouro</label>
                                                                 <label class="input">
                                                                     <input id="tipoLogradouro"  name="tipoLogradouro" maxlength="15" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-9">
-                                                                <label class="label">Logradouro</label>
+                                                                <label class="label" for="logradouro">Logradouro</label>
                                                                 <label class="input">
                                                                     <input id="logradouro"  name="logradouro" maxlength="150" type="text" value="" class="required" required>
                                                                 </label>
@@ -207,13 +207,13 @@ include("inc/nav.php");
                                                         </div>                                                                
                                                         <div class="row">
                                                             <section class="col col-3">
-                                                                <label class="label">Número</label>
+                                                                <label class="label" for="numero">Número</label>
                                                                 <label class="input">
                                                                     <input id="numero"  name="numero" maxlength="20" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-9">
-                                                                <label class="label">Complemento</label>
+                                                                <label class="label" for="complemento">Complemento</label>
                                                                 <label class="input">
                                                                     <input id="complemento"  name="complemento" maxlength="50" type="text" value="" class="required" required>
                                                                 </label>
@@ -221,13 +221,13 @@ include("inc/nav.php");
                                                         </div>
                                                         <div class="row">
                                                             <section class="col col-4">
-                                                                <label class="label">Bairro</label>
+                                                                <label class="label" for="bairro">Bairro</label>
                                                                 <label class="input">
                                                                     <input id="bairro"  name="bairro" maxlength="30" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-4">
-                                                                <label class="label">UF</label>
+                                                                <label class="label" for="unidadeFederacao">UF</label>
                                                                 <label class="select">
                                                                     <select id="unidadeFederacao" name="unidadeFederacao" class="required" required> 
                                                                         <?php
@@ -246,7 +246,7 @@ include("inc/nav.php");
                                                                 </label>                                                                                                                                
                                                             </section>
                                                             <section class="col col-4">
-                                                                <label class="label">Cidade</label>
+                                                                <label class="label" for="cidade">Cidade</label>
                                                                 <label class="input">
                                                                     <input id="cidade"  name="cidade" maxlength="30" type="text" value="" class="required" required>
                                                                 </label>
