@@ -356,7 +356,7 @@ include("inc/scripts.php");
         }));
 
        
-                 
+        $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );         
             
         $('#formBloco').validate({
             // Rules for form validation

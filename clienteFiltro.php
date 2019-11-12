@@ -87,20 +87,20 @@ include("inc/ribbon.php");
                                                     <fieldset>
                                                         <div class="row">
                                                             <section class="col col-5">
-                                                                <label class="label">Nome</label>
+                                                                <label class="label" for="nome">Nome</label>
                                                                 <label class="input"><i class="icon-append fa fa-user"></i>
                                                                     <input id="nome" maxlength="50" name="nome" type="text" value="" autocomplete="off">
                                                                 </label>
                                                             </section> 
                                                             <section class="col col-3">
-                                                                <label class="label">Data de admissão inicial</label>
+                                                                <label class="label" for="dtAdInicial">Data de admissão inicial</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
                                                                     <input id="dtAdInicial"  name="dtAdInicial" type="text" data-dateformat="dd/mm/yy" class="datepicker" value="" data-mask="99/99/9999" data-mask-placeholder= "-" autocomplete="off">
                                                                 </label>
                                                             </section> 
                                                             <section class="col col-3">
-                                                                <label class="label">Data de admissão Final</label>
+                                                                <label class="label" for="dtAdFinal">Data de admissão Final</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
                                                                     <input id="dtAdFinal"  name="dtAdFinal" type="text" data-dateformat="dd/mm/yy" class="datepicker" value="" data-mask="99/99/9999" data-mask-placeholder= "-" autocomplete="off">
