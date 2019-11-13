@@ -456,23 +456,22 @@ include("inc/scripts.php");
         }); 
 
         //Ao alterar a data da entrega das chaves, faça...
-        $("#dataInicioConstrucao").on("change", function () {
+        $("#dataEntregaChaves").on("change", function () {
 
             // Verificação de todas as datas
-            var valor = $("#dataInicioConstrucao").val();
+            var valor = $("#dataEntregaChaves").val();
             var validacao = validaData(valor);
 
-            if(validacao === false){
-             smartAlert("Erro", "A data de nascimento não pode ser maior do que a data de hoje!", "error");   
-             $("#dataInicioConstrucao").val("");
+            if(validacao === false){ 
+             $("#dataEntregaChaves").val("");
             }
             
             //Verifica se a dataInicioConstrucao > dataEntregaChaves
             valor = formataData(valor); 
-            var entregaChaves = $("#dataEntregaChaves").val();
-            entregaChaves = formataData(entregaChaves);
+            var dataInicioConstrucao = $("#dataInicioConstrucao").val();
+            dataInicioConstrucao = formataData(dataInicioConstrucao);
         
-            if(valor > entregaChaves){
+            if(valor < dataInicioConstrucao){
                smartAlert("Erro", "A data de início da construção não pode ser maior do que a data da entrega das chaves!", "error");
                 $("#dataInicioConstrucao").val("");  
             }        

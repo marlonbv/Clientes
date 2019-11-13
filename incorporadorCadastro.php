@@ -355,26 +355,28 @@ include("inc/scripts.php");
         }));
          
          
-        //Aplicando máscaras:
-        //CEP
-        $('#cep').mask('99999-999', {placeholder: "X"});
-        
-        //CNPJ/CPF
+        //Aplicando máscaras:  
+        //CEP - Simples  
+        $("input[id*='cep']").inputmask({
+        mask: ['99999-999'],
+        placeholder: "X",
+        keepStatic: true
+        });  
+         
+        //CNPJ/CPF - Composto
         $("input[id*='cnpjCpf']").inputmask({
         mask: ['999.999.999-99', '99.999.999/9999-99'],
         placeholder: "X",
         keepStatic: true
         });
         
-        //Telefone
+        //Telefone - Composto
         $("input[id*='telefone']").inputmask({
         mask: ['(99) 9999-9999', '(99) 99999-9999'],
         placeholder: "X",
         keepStatic: true
         }); 
-         
-         
-         
+           
          //Verificação de CPF/CNPJ
          $("#cnpjCpf").on("change", function () {
          var val = $("#cnpjCpf").val();
