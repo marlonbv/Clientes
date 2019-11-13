@@ -21,9 +21,11 @@ include "js/repositorio.php";
                 $dtAdInicial = $_GET['dtAdInicial'];
 
                 //Pega todas as variáveis do banco
-                $sql = " SELECT CLI.nome,CLI.cpf ,CLI.dtNasc, S.sexo, CE.email ,CLI.dtAdInicial, CLI.situacao,"
-                     . " FROM dbo.cliente CLI JOIN dbo.sexo AS S ON CLI.sexo JOIN dbo.clienteEmail AS CE = S.codigo ";
-                 $where = "WHERE (0 = 0)";
+                $sql = "SELECT CLI.nome, CLI.cpf, CLI.dtNasc, S.descricao, CE.email, CLI.dtAdInicial, CLI.situacao
+                FROM dbo.cliente CLI
+                JOIN dbo.sexo S ON S.codigo  = CLI.sexo
+                JOIN dbo.clienteEmail CE ON CLI.codigo = CE.cliente ";
+                $where = "WHERE (0 = 0)";
 
 
                 if ($dtAdInicial != "") {
@@ -107,7 +109,7 @@ include "js/repositorio.php";
                     echo '<td class="text-left">' . $sexo . '</td>';
                     echo '<td class="text-left">' . $email . '</td>';
                     echo '<td class="text-left">' . $dtAdInicial . '</td>';
-                    echo '<td class="text-left">' . $situacao . '</td>';
+                    echo '<td class="text-left">' . $descricaoAtivo . '</td>';
                     echo '</tr >';
                 }
                 ?>               

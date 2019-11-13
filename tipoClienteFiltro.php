@@ -87,7 +87,7 @@ include("inc/ribbon.php");
                                                     <fieldset>
                                                         <div class="row">
                                                             <section class="col col-5">
-                                                                <label class="label">Tipo do Cliente</label>
+                                                                <label class="label" for="tipoCliente">Tipo do Cliente</label>
                                                                 <label class="select">
                                                                     <select id="tipoCliente" name="tipoCliente">
                                                                         <option></option>

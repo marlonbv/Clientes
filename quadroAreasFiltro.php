@@ -88,7 +88,7 @@ include("inc/ribbon.php");
                                                         <div class="row ">
                                                             
                                                             <section class="col col-5">
-                                                                <label class="label">Quadro de Áreas</label>
+                                                                <label class="label" for="quadroAreas">Quadro de Áreas</label>
                                                                 <label class="select">
                                                                     <select id="quadroAreas" name="quadroAreas">
                                                                         <option></option>

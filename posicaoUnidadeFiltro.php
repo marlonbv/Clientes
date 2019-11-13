@@ -88,7 +88,7 @@ include("inc/ribbon.php");
                                                         <div class="row ">
                                                             
                                                             <section class="col col-5">
-                                                                <label class="label">Posição Relativa da Unidade</label>
+                                                                <label class="label" for="posicaoUnidade">Posição Relativa da Unidade</label>
                                                                 <label class="select">
                                                                     <select id="posicaoUnidade" name="posicaoUnidade">
                                                                         <option></option>
