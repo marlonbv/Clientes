@@ -39,6 +39,7 @@ $page_title = "Cadastro";
 //Note: all css files are inside css/ folder
 $page_css[] = "your_style.css";
 include("inc/header.php");
+include "gir_script.js";
 
 //include left panel (navigation)
 //follow the tree in inc/config.ui.php
@@ -430,6 +431,54 @@ include("inc/scripts.php");
                 }]
         });
 
+        //Ao alterar a data de inicio da construção, faça...
+        $("#dataInicioConstrucao").on("change", function () {
+
+            // Verificação de todas as datas
+            var valor = $("#dataInicioConstrucao").val();
+            var validacao = validaData(valor);
+
+            if(validacao === false){
+             smartAlert("Erro", "A data de nascimento não pode ser maior do que a data de hoje!", "error");   
+             $("#dataInicioConstrucao").val("");
+            }
+            
+            //Verifica se a dataInicioConstrucao > dataEntregaChaves
+            valor = formataData(valor); 
+            var entregaChaves = $("#dataEntregaChaves").val();
+            entregaChaves = formataData(entregaChaves);
+        
+            if(valor > entregaChaves){
+               smartAlert("Erro", "A data de início da construção não pode ser maior do que a data da entrega das chaves!", "error");
+                $("#dataInicioConstrucao").val("");  
+            }        
+         
+        }); 
+
+        //Ao alterar a data da entrega das chaves, faça...
+        $("#dataInicioConstrucao").on("change", function () {
+
+            // Verificação de todas as datas
+            var valor = $("#dataInicioConstrucao").val();
+            var validacao = validaData(valor);
+
+            if(validacao === false){
+             smartAlert("Erro", "A data de nascimento não pode ser maior do que a data de hoje!", "error");   
+             $("#dataInicioConstrucao").val("");
+            }
+            
+            //Verifica se a dataInicioConstrucao > dataEntregaChaves
+            valor = formataData(valor); 
+            var entregaChaves = $("#dataEntregaChaves").val();
+            entregaChaves = formataData(entregaChaves);
+        
+            if(valor > entregaChaves){
+               smartAlert("Erro", "A data de início da construção não pode ser maior do que a data da entrega das chaves!", "error");
+                $("#dataInicioConstrucao").val("");  
+            }        
+         
+        }); 
+
         $("#btnExcluir").on("click", function () {
             var id = +$("#codigo").val();
 
@@ -634,5 +683,6 @@ include("inc/scripts.php");
 
         }
     }
+     
 
 </script>

@@ -99,7 +99,7 @@ class comum {
         }
                 
         return 0;
-    }
+    } 
     
     function ValidaSenha($senha){
         if (preg_match('/\s/',$senha)){
@@ -196,8 +196,6 @@ class comum {
         $cripto= md5($cadeiaCaracter);
         return $cripto;
     }
-    
-    
-
-}
+ 
+} 
 ?>

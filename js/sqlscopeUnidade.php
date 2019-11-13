@@ -112,7 +112,7 @@ function grava() {
     
     $areaTotal = +$_POST['areaTotal'];
     
-    $sql = "unidade_Atualiza(" .$id .",".$descricao.")";
+    $sql = "unidade_Atualiza(" .$id .",".$descricao. $xmlQuadroAreas")";
   
     $reposit = new reposit();
     $result = $reposit->Execprocedure($sql);

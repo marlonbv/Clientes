@@ -40,6 +40,7 @@ $page_title = "Cliente";
 $page_css[] = "your_style.css";
 include("inc/header.php");
 include "girComum.php";
+include "gir_script.js";
 include "sqlscope.php";
 
 
@@ -877,7 +878,7 @@ include("inc/scripts.php");
             var valor = $("#dtNasc").val();
             var validacao = validaData(valor);
 
-            if(validacao === false){
+            if(validacao === false){ 
              $("#dtNasc").val("");
             }
             
@@ -1689,38 +1690,5 @@ include("inc/scripts.php");
     return pattern.test(value);
     }
     
-    //Função que valida todas as datas
-    function validaData(valor){
-        var date=valor;
-	var ardt=new Array;
-	var ExpReg=new RegExp("(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}");
-	ardt=date.split("/");
-	erro=false;
-	if ( date.search(ExpReg)==-1){
-		erro = true;
-		}
-	else if (((ardt[1]==4)||(ardt[1]==6)||(ardt[1]==9)||(ardt[1]==11))&&(ardt[0]>30))
-		erro = true;
-	else if ( ardt[1]==2) {
-		if ((ardt[0]>28)&&((ardt[2]%4)!=0))
-			erro = true;
-		if ((ardt[0]>29)&&((ardt[2]%4)==0))
-			erro = true;
-	}
-	if (erro) {
-		smartAlert("Erro", "O valor inserido é inválido.", "error"); 
-		return false;
-	}
-	return true;
-    }
-    
-    //Função que quebra uma string e transforma ela em um valor.
-    function formataData(valor){
-        var y = (parseInt(valor.split('/')[2]));
-        var m = (parseInt(valor.split('/')[1]) - 1);
-        var d = (parseInt(valor.split('/')[0]));
-        valor = new Date(y,m,d); 
-        return valor;
-    }
     
 </script>

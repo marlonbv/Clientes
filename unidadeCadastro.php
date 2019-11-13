@@ -463,7 +463,7 @@ include("inc/scripts.php");
 <script language="JavaScript" type="text/javascript">
 //Transforma  os atributos das listas em JSON
     jsonQuadroAreasArray = JSON.parse($("#JsonQuadroAreas").val());
-
+    
     $(document).ready(function () {
         $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
             _title: function (title) {
