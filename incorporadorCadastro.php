@@ -322,8 +322,8 @@ include("inc/scripts.php");
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.resize.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.time.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
-<script src="https://rawgit.com/RobinHerbots/Inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-
+<!-- Máscaras em um único campo por Robin Herbots, "inputmask" --> 
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/inputmask/jquery.inputmask.js"></script>   
 
 <!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
@@ -357,17 +357,19 @@ include("inc/scripts.php");
          
         //Aplicando máscaras:
         //CEP
-        $('#cep').mask('999999-999', {placeholder: "_"});
+        $('#cep').mask('99999-999', {placeholder: "X"});
         
         //CNPJ/CPF
         $("input[id*='cnpjCpf']").inputmask({
         mask: ['999.999.999-99', '99.999.999/9999-99'],
+        placeholder: "X",
         keepStatic: true
         });
         
         //Telefone
         $("input[id*='telefone']").inputmask({
         mask: ['(99) 9999-9999', '(99) 99999-9999'],
+        placeholder: "X",
         keepStatic: true
         }); 
          

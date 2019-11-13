@@ -43,10 +43,8 @@ function grava() {
     }
  
     $empreendimento = +$_POST['empreendimento'];
-    
-    $blocos = +$_POST['blocos'];
-    
     $vinculadas = +$_POST['vinculadas'];
+    $blocos = +$_POST['blocos'];
     
     $matricula = $_POST['matricula'];
     $matricula = "'" . $matricula . "'";
@@ -57,15 +55,15 @@ function grava() {
     $andar = "'" . $andar . "'";
     
     $coluna = +$_POST['coluna'];
-    
     $tipologia = +$_POST['tipologia'];
-    
     $posicaoSol = +$_POST['posicaoSol'];
-    
     $vistaUnidade = +$_POST['vistaUnidade'];
     
+    $inscricaoPredial = $_POST['inscricaoPredial'];
+    $inscricaoPredial = "'" . $inscricaoPredial . "'";
+    
     //Lista 
-    $strArrayQuadroAreas = $_POST["jsonQuadroAreasArray"];
+    $strArrayQuadroAreas = $_POST["JsonQuadroAreas"];
     $arrayQuadroAreas = json_decode($strArrayQuadroAreas, true);
     $xmlQuadroAreas = "";
     $nomeXml = "ArrayOfQuadroAreas";
@@ -104,19 +102,15 @@ function grava() {
         return;
     }
     $xmlQuadroAreas = "'" . $xmlQuadroAreas . "'";  
-    
-    $inscricaoPredial = $_POST['inscricaoPredial'];
-    $inscricaoPredial = "'" . $inscricaoPredial . "'";
+     
     
     $areaUtil = $_POST['areaUtil'];
     
     $areaPrivada = $_POST['areaPrivada'];
+  
+    $areaComum = +$_POST['areaComum'];
     
-    $vistaUnidade = $_POST['vistaUnidade'];
-    
-    $vistaComum = +$_POST['vistaComum'];
-    
-    $vistaTotal = +$_POST['vistaTotal'];
+    $areaTotal = +$_POST['areaTotal'];
     
     $sql = "unidade_Atualiza(" .$id .",".$descricao.")";
   

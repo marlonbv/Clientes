@@ -659,7 +659,7 @@ include("inc/scripts.php");
         else
             jsonQuadroAreasArray.push(item);
 
-        $("#jsonQuadroAreas").val(JSON.stringify(jsonQuadroAreasArray));
+        $("#JsonQuadroAreas").val(JSON.stringify(jsonQuadroAreasArray));
         fillTableQuadroAreas();
         clearFormQuadroAreas();
     }
@@ -678,7 +678,7 @@ include("inc/scripts.php");
                 }
             }
 
-            $("#jsonQuadroAreas").val(JSON.stringify(jsonQuadroAreasArray));
+            $("#JsonQuadroAreas").val(JSON.stringify(jsonQuadroAreasArray));
             fillTableQuadroAreas();
         } else
             smartAlert("Erro", "Selecione pelo menos 1 quadro para excluir.", "error");
@@ -741,7 +741,7 @@ include("inc/scripts.php");
         var posicaoSol = $("#posicaoSol").val();
         var vistaUnidade = $("#vistaUnidade").val();
         var inscricaoPredial = $("#inscricaoPredial").val();
-        var jsonQuadroAreasArray = $("#jsonQuadroAreasArray").val();
+        var jsonQuadroAreasArray = $("#JsonQuadroAreas").val();
         var areaUtil = $("#areaUtil").val();
         var areaPrivada = $("#areaPrivada").val();
         var areaComum = $("#areaComum").val();
