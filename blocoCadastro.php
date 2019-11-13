@@ -175,7 +175,7 @@ include("inc/nav.php");
                                                                 <label class="label">Início da construção</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dataInicioConstrucao"  name="dataInicioConstrucao" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "-" autocomplete="off" required>
+                                                                    <input id="dataInicioConstrucao"  name="dataInicioConstrucao" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off" required>
                                                                 </label>
                                                             </section>
 
@@ -183,7 +183,7 @@ include("inc/nav.php");
                                                                 <label class="label">Entrega das chaves</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dataEntregaChaves"  name="dataEntregaChaves" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "-" autocomplete="off" required>
+                                                                    <input id="dataEntregaChaves"  name="dataEntregaChaves" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off" required>
                                                                 </label>
                                                             </section>
 

@@ -122,7 +122,7 @@ include("inc/nav.php");
                                                                 <label class="label" for="dtNasc">Data de Nascimento</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dtNasc"  name="dtNasc" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "-" autocomplete="off" required>
+                                                                    <input id="dtNasc"  name="dtNasc" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off" required>
                                                                 </label>
                                                             </section>
 
@@ -130,7 +130,7 @@ include("inc/nav.php");
                                                                 <label class="label" for="dtAdInicial">Data de Admissão</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dtAdInicial"  name="dtAdInicial" type="text" data-dateformat="dd/mm/yy" class="datepicker" value="" data-mask="99/99/9999" data-mask-placeholder= "-" autocomplete="off">
+                                                                    <input id="dtAdInicial"  name="dtAdInicial" type="text" data-dateformat="dd/mm/yy" class="datepicker" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off">
                                                                 </label>
                                                             </section> 
                                                              
@@ -233,13 +233,13 @@ include("inc/nav.php");
                                                                     <section class="col col-md-5">
                                                                         <label class="label" for="telefone">Celular</label>
                                                                         <label class="input"><i class="icon-prepend fa fa-phone"></i>
-                                                                            <input id="telefone" class="form-control" data-mask-placeholder=" " data-mask="(99) 99999-9999" name="telefone" type="text" value="">
+                                                                            <input id="telefone" class="form-control" data-mask-placeholder="X" data-mask="(99) 99999-9999" name="telefone" type="text" value="">
                                                                         </label>
                                                                     </section>
                                                                     <section class="col col-md-5">
                                                                         <label class="label" for="telefoneFixo">Fixo</label>
                                                                         <label class="input"><i class="icon-prepend fa fa-phone"></i>
-                                                                            <input id="telefoneFixo" class="form-control" data-mask-placeholder=" " data-mask="(99) 9999-9999" name="telefoneFixo" type="text" value="">
+                                                                            <input id="telefoneFixo" class="form-control" data-mask-placeholder="X" data-mask="(99) 9999-9999" name="telefoneFixo" type="text" value="">
                                                                         </label>
                                                                     </section>
                                                                 </div>
@@ -653,7 +653,7 @@ include("inc/scripts.php");
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.resize.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.time.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
-
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/inputmask/jquery.inputmask.js"></script>  
 <!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
