@@ -87,7 +87,7 @@ include("inc/nav.php");
                                                     <fieldset>
                                                         <div class="row"> 
                                                             <input id="codigo" name="codigo" type="hidden"> 
-                                                            <section class="col col-10">
+                                                            <section class="col col-9">
                                                                 <label class="label">Empreendimento</label>
                                                                 <label class="select">
                                                                     <select id="empreendimento" name="empreendimento" class="required" required> 
@@ -108,27 +108,30 @@ include("inc/nav.php");
                                                                 </label> 
                                                             </section>
 
-                                                            <section class="col col-2">
+                                                            <section class="col col-3">
                                                                 <label class="label">Unidade</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="unidade" name="unidade" class="readonly" readonly/>
                                                                 </label>       
                                                             </section> 
-
-                                                            <section class="col col-10">
+                                                        </div>
+                                                        <div class="row">
+                                                            
+                                                            <section class="col col-9">
                                                                 <label class="label">Nome do bloco</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="nome" name="nome" class="required" required/>
                                                                 </label>       
                                                             </section>  
 
-                                                            <section class="col col-2">
+                                                            <section class="col col-3">
                                                                 <label class="label">Vinculadas</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="vinculadas" name="vinculadas" class="readonly" readonly/>
                                                                 </label>       
                                                             </section> 
-
+                                                        </div>
+                                                        <div class="row">
                                                             <section class="col col-6">
                                                                 <label class="label">Natureza</label>
                                                                 <label class="select">
@@ -170,8 +173,9 @@ include("inc/nav.php");
                                                                     </select><i></i>
                                                                 </label>        
                                                             </section> 
-
-                                                            <section class="col col-3">
+                                                        </div>
+                                                        <div class="row">
+                                                        <section class="col col-3">
                                                                 <label class="label">Início da construção</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
@@ -193,8 +197,8 @@ include("inc/nav.php");
                                                                     <input id="observacao" name="observacao" type="text">
                                                                 </label>
                                                             </section> 
-
-
+                                                        </div>
+                                                        <div class="row"> 
                                                             <fieldset id="formTipologia">
                                                                 
                                                                 <input id="JsonTipologia" name="JsonTipologia" type="hidden" value="[]">
@@ -556,7 +560,34 @@ include("inc/scripts.php");
 
         excluirBloco(id);
     }
-
+    
+    function validaTipologia(){
+        var existe = false; 
+        var tipologia = $('#tipologia').val();
+        var sequencial = +$('#sequencialTipologia').val();
+        
+        if (tipologia === '') {
+            smartAlert("Erro", "Informe a tipologia.", "error");
+            return false;
+        }
+        
+        for (i = jsonTipologiaArray.length - 1; i >= 0; i--) {
+            
+            if ((jsonTipologiaArray[i].tipologia === tipologia) && (jsonTipologiaArray[i].sequencialTipologia !== sequencial)) {
+                existe = true;
+                break;
+            }
+            
+        }
+        
+        if (existe === true) {
+            smartAlert("Erro", "A tipologia já foi cadastrada.", "error");
+            return false;
+        }
+        
+        return true;
+    }
+    
     function processDataTipologia(node) {
         var fieldId = node.getAttribute ? node.getAttribute('id') : '';
         var fieldName = node.getAttribute ? node.getAttribute('name') : '';
@@ -590,7 +621,9 @@ include("inc/scripts.php");
     
     //Ações dos botões de Tipologia
         $('#btnAddTipologia').on("click", function () {
+            if (validaTipologia() === true){
             addTipologia();
+            }
         });
 
         $('#btnRemoverTipologia').on("click", function () {

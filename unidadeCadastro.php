@@ -86,7 +86,7 @@ include("inc/nav.php");
                                                     <fieldset>
                                                         <div class="row"> 
                                                             <input id="codigo" name="codigo" type="hidden"> 
-                                                            <section class="col col-10">
+                                                            <section class="col col-9">
                                                                 <label class="label">Empreendimento</label>
                                                                 <label class="select">
                                                                     <select id="empreendimento" name="empreendimento" class="required" required> 
@@ -106,15 +106,17 @@ include("inc/nav.php");
                                                                     </select><i></i>
                                                                 </label> 
                                                             </section> 
-
-                                                            <section class="col col-2">
-                                                                <label class="label">Vinculadas</label>
+                                                            
+                                                            <section class="col col-3">
+                                                                <label class="label">Unidade</label>
                                                                 <label class="input">
-                                                                    <input  type="text" id="vinculadas" name="vinculadas" class="required" required/>
+                                                                    <input  type="text" id="unidade" name="unidade" class="required" required/>
                                                                 </label>       
                                                             </section> 
-
-                                                            <section class="col col-8">
+                                                             
+                                                        </div>
+                                                            <div class="row">
+                                                            <section class="col col-3">
                                                                 <label class="label">Bloco</label>
                                                                 <label class="select">
                                                                     <select id="bloco" name="bloco" class="required" required> 
@@ -134,78 +136,37 @@ include("inc/nav.php");
                                                                     </select><i></i>    
                                                                 </label>
                                                             </section>  
-
-                                                            <section class="col col-4">
+                                                                
+                                                             
+                                                            <section class="col col-6">
                                                                 <label class="label">Matrícula</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="matricula" name="matricula" class="required" required/>
                                                                 </label>       
-                                                            </section> 
-
-                                                            <section class="col col-2">
-                                                                <label class="label">Unidade</label>
+                                                            </section>
+                                                                
+                                                            <section class="col col-3">
+                                                                <label class="label">Vinculadas</label>
                                                                 <label class="input">
-                                                                    <input  type="text" id="unidade" name="unidade" class="required" required/>
+                                                                    <input  type="text" id="vinculadas" name="vinculadas" class="required" required/>
                                                                 </label>       
-                                                            </section> 
-
-                                                            <section class="col col-2">
+                                                            </section>     
+                                                            </div>
+                                                        <div class="row">  
+                                                            <section class="col col-3">
                                                                 <label class="label">Andar</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="andar" name="andar" class="required" required/>
                                                                 </label>       
                                                             </section> 
 
-                                                            <section class="col col-2">
+                                                            <section class="col col-3">
                                                                 <label class="label">Coluna</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="coluna" name="coluna" class="required" required/>
                                                                 </label>       
                                                             </section> 
-
-                                                            <section class="col col-6">
-                                                                <label class="label">Tipologia</label>
-                                                                <label class="select">
-                                                                    <select id="tipologia" name="tipologia" class="required" required> 
-                                                                        <option></option>
-                                                                        <?php
-                                                                        $reposit = new reposit();
-                                                                        $tabela = "tipologia";
-
-                                                                        $result = $reposit->SelectAll($tabela . "|" . "");
-
-                                                                        while (($row = odbc_fetch_array($result))) {
-                                                                            $id = $row['codigo'];
-                                                                            $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
-                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
-                                                                        }
-                                                                        ?>
-                                                                    </select><i></i>
-                                                                </label>        
-                                                            </section> 
-
-                                                            <section class="col col-6">
-                                                                <label class="label">Posição Relativa do Sol </label>
-                                                                <label class="select">
-                                                                    <select id="posicaoSol" name="posicaoSol" class="required" required> 
-                                                                        <option></option>
-                                                                        <?php
-                                                                        $reposit = new reposit();
-                                                                        $tabela = "posicaoSol";
-
-                                                                        $result = $reposit->SelectAll($tabela . "|" . "");
-
-                                                                        while (($row = odbc_fetch_array($result))) {
-                                                                            $id = $row['codigo'];
-                                                                            $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
-                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
-                                                                        }
-                                                                        ?>
-                                                                    </select><i></i>
-                                                                </label>        
-                                                            </section> 
-
-                                                            <section class="col col-6">
+                                                            <section class="col col-3">
                                                                 <label class="label">Vista da Unidade </label>
                                                                 <label class="select">
                                                                     <select id="vistaUnidade" name="vistaUnidade" class="required" required> 
@@ -225,14 +186,56 @@ include("inc/nav.php");
                                                                     </select><i></i>
                                                                 </label>        
                                                             </section> 
+                                                            <section class="col col-3">
+                                                                <label class="label">Posição Relativa do Sol </label>
+                                                                <label class="select">
+                                                                    <select id="posicaoSol" name="posicaoSol" class="required" required> 
+                                                                        <option></option>
+                                                                        <?php
+                                                                        $reposit = new reposit();
+                                                                        $tabela = "posicaoSol";
 
-                                                            <section class="col col-12">
+                                                                        $result = $reposit->SelectAll($tabela . "|" . "");
+
+                                                                        while (($row = odbc_fetch_array($result))) {
+                                                                            $id = $row['codigo'];
+                                                                            $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
+                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
+                                                                        }
+                                                                        ?>
+                                                                    </select><i></i>
+                                                                </label>        
+                                                            </section> 
+                                                            
+                                                        </div>
+                                                        <div class="row">
+                                                        <section class="col col-6">
+                                                                <label class="label">Tipologia</label>
+                                                                <label class="select">
+                                                                    <select id="tipologia" name="tipologia" class="required" required> 
+                                                                        <option></option>
+                                                                        <?php
+                                                                        $reposit = new reposit();
+                                                                        $tabela = "tipologia";
+
+                                                                        $result = $reposit->SelectAll($tabela . "|" . "");
+
+                                                                        while (($row = odbc_fetch_array($result))) {
+                                                                            $id = $row['codigo'];
+                                                                            $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
+                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
+                                                                        }
+                                                                        ?>
+                                                                    </select><i></i>
+                                                                </label>        
+                                                            </section>
+                                                            <section class="col col-6">
                                                                 <label class="label">Inscrição Predial</label>
                                                                 <label class="input">
                                                                     <input id="inscricaoPredial" name="inscricaoPredial" type="text">
                                                                 </label>
                                                             </section> 
-                                                        </div>  
+                                                        </div> 
                                                     </fieldset> 
                                                 </div>                                                        
                                             </div>  
@@ -283,7 +286,7 @@ include("inc/nav.php");
                                                             <section class="col col-4">
                                                                 <label class="label">Tamanho em metros quadrados</label>
                                                                 <label class="input">
-                                                                    <input id="tipoLogradouro"  name="tamanho"  type="text" value="">
+                                                                    <input id="tamanhoQuadrados"  name="tamanhoQuadrados"  type="text" value="">
                                                                 </label>
                                                             </section>
 

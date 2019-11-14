@@ -98,8 +98,7 @@ include("inc/nav.php");
                                                                 <label class="input">
                                                                     <input  type="text" id="descricao" name="descricao" class="required" required/>
                                                                 </label>       
-                                                            </section>  
-                                                            
+                                                            </section>
                                                         </div> 
                                                     </fieldset> 
                                                 </div>                                                        
