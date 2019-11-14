@@ -73,7 +73,7 @@ include("inc/nav.php");
                         </header>
                         <div>
                             <div class="widget-body no-padding">
-                                <form action="javascript:gravar()" class="smart-form client-form" id="formCliente" method="post">    
+                                <form action="javascript:gravar()" class="smart-form client-form" id="formCliente" method="post" autocomplete="off">    
                                     <div class="panel-group smart-accordion-default" id="accordion">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
@@ -109,35 +109,33 @@ include("inc/nav.php");
                                                             <section class="col col-6">
                                                                 <label class="label" for="nome">Nome</label>
                                                                 <label class="input">
-                                                                    <input id="nome" maxlength="255" name="nome" type="text" value="" autocomplete="off" class="required" required>
-                                                                </label>
-                                                            </section>
-                                                            <section class="col col-2">
-                                                                <label class="label" for="cpf">CPF</label>
-                                                                <label class="input">
-                                                                    <input id="cpf" data-mask="999.999.999-99" maxlength="14" name="cpf" type="text" value="" class="required" required>
+                                                                    <input id="nome" maxlength="255" name="nome" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section> 
-                                                            <section class="col col-2">
+                                                            <section class="col col-3">
                                                                 <label class="label" for="dtNasc">Data de Nascimento</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dtNasc"  name="dtNasc" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off" required>
+                                                                    <input id="dtNasc"  name="dtNasc" type="text" class="datepicker required" value=""  required>
                                                                 </label>
                                                             </section>
 
-                                                            <section class="col col-2">
+                                                            <section class="col col-3">
                                                                 <label class="label" for="dtAdInicial">Data de Admissão</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dtAdInicial"  name="dtAdInicial" type="text" data-dateformat="dd/mm/yy" class="datepicker" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off">
+                                                                    <input id="dtAdInicial"  name="dtAdInicial"  type="text" class="datepicker" value="" >
                                                                 </label>
-                                                            </section> 
-                                                             
-                                                             
+                                                            </section>   
                                                         </div>
                                                         <div class="row">
-                                                             <section class="col col-2">
+                                                            <section class="col col-3">
+                                                                <label class="label" for="cpf">CPF</label>
+                                                                <label class="input">
+                                                                    <input id="cpf"  maxlength="14" name="cpf" id="cpf" type="text" value="" class="required" required>
+                                                                </label>
+                                                            </section> 
+                                                             <section class="col col-3">
                                                                 <label class="label" for="sexo">Sexo</label>
                                                                 <label class="select">
                                                                     <select id="sexo" name="sexo" class="required" required>
@@ -156,7 +154,7 @@ include("inc/nav.php");
                                                                     </select><i></i>
                                                                 </label>            
                                                             </section> 
-                                                            <section class="col col-2">
+                                                            <section class="col col-3">
                                                                 <label class="label" for="tipoCliente">Tipo de Cliente</label>
                                                                 <label class="select">
                                                                     <select id="tipoCliente" name="tipoCliente">
@@ -175,7 +173,7 @@ include("inc/nav.php");
                                                                     </select><i></i>
                                                                 </label> 
                                                             </section>
-                                                            <section class="col col-2">
+                                                            <section class="col col-3">
                                                                 <label class="label" for="estadoCivil">Estado Civil</label>
                                                                 <label class="select">
                                                                     <select id="estadoCivil" name="estadoCivil">
@@ -233,13 +231,13 @@ include("inc/nav.php");
                                                                     <section class="col col-md-5">
                                                                         <label class="label" for="telefone">Celular</label>
                                                                         <label class="input"><i class="icon-prepend fa fa-phone"></i>
-                                                                            <input id="telefone" class="form-control" data-mask-placeholder="X" data-mask="(99) 99999-9999" name="telefone" type="text" value="">
+                                                                            <input id="telefone" class="form-control" name="telefone" type="text" value="">
                                                                         </label>
                                                                     </section>
                                                                     <section class="col col-md-5">
                                                                         <label class="label" for="telefoneFixo">Fixo</label>
                                                                         <label class="input"><i class="icon-prepend fa fa-phone"></i>
-                                                                            <input id="telefoneFixo" class="form-control" data-mask-placeholder="X" data-mask="(99) 9999-9999" name="telefoneFixo" type="text" value="">
+                                                                            <input id="telefoneFixo" class="form-control" name="telefoneFixo" type="text" value="">
                                                                         </label>
                                                                     </section>
                                                                 </div>
@@ -351,7 +349,7 @@ include("inc/nav.php");
                                                             <section class="col col-3">
                                                                 <label class="label" for="cep">Cep</label>
                                                                 <label class="input">
-                                                                    <input id="cep"  name="cep" type="text" data-mask="99999-999" data-mask-placeholder="X" value="" onchange="buscaCep()">
+                                                                    <input id="cep"  name="cep" type="text" onchange="buscaCep()">
                                                                 </label>
                                                             </section>
                                                             <section class="col col-3">
@@ -678,8 +676,51 @@ include("inc/scripts.php");
     jsonRedesArray = JSON.parse($("#jsonRedes").val());
 
     $(document).ready(function () {
-      
-        //-> ALTERAR $('.datepicker').mask('99/99/9999',{placeholder: "--/--/----"});
+        
+        //Faz com que o calendário fique em português.
+        $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );
+        
+        //Máscara de dtNasc
+        $("input[id*='dtNasc']").inputmask({
+        mask: ['99/99/9999'],
+        placeholder: "X",
+        keepStatic: true
+        });
+        
+        //Máscara de dtAdInicial
+        $("input[id*='dtAdInicial']").inputmask({
+        mask: ['99/99/9999'],
+        placeholder: "X",
+        keepStatic: true
+        });
+        
+        //Máscara de CPF
+        $("input[id*='cpf']").inputmask({
+        mask: ['999.999.999-99'],
+        placeholder: "X",
+        keepStatic: true
+        });
+        
+        //Máscara de celular
+        $("input[id*='telefone']").inputmask({
+        mask: ['(99) 99999-9999'],
+        placeholder: "X",
+        keepStatic: true
+        });
+        
+        //Máscara de telefone fixo
+        $("input[id*='telefoneFixo']").inputmask({
+        mask: ['(99) 9999-9999'],
+        placeholder: "X",
+        keepStatic: true
+        });
+        
+        //Máscara de telefone fixo
+        $("input[id*='cep']").inputmask({
+        mask: ['99999-999'],
+        placeholder: "X",
+        keepStatic: true
+        });
         
         //Ações dos botões de Telefone
         $('#btnAddTelefone').on("click", function () {
@@ -906,14 +947,17 @@ include("inc/scripts.php");
                   
         }); 
         
-        //Função que permite apenas letras no campo nome.
+        //Validando se o campo nome possui apenas letras quando algo é digitado.
         $('#nome').bind('keypress', validaCampoApenasLetras);
         
+        //Validando se o campo numero possui apenas letras quando algo é digitado.
+        $('#numero').bind('keypress', validaCampoApenasNumeros);
          
         carregaPagina();
 
     });
 
+    //Função que carrega a página
     function carregaPagina() {
         var urlx = window.document.URL.toString();
         var params = urlx.split("?");
@@ -928,10 +972,12 @@ include("inc/scripts.php");
         $("#nome").focus();
     }
 
+    //Função que ao clicar no botão de novo, redireciona para a página clienteCadastro.
     function novo() {
         $(location).attr('href', 'clienteCadastro.php');
     }
 
+    //Função que ao clicar no botão de voltar, redireciona para a página clienteFiltro.
     function voltar() {
         $(location).attr('href', 'clienteFiltro.php');
     }
@@ -1682,13 +1728,5 @@ include("inc/scripts.php");
         var cep = $("#cep").val();
         recuperaCep(cep);
     }
-    
-    //Função que permite digitar apenas letras em um campo html 
-    function validaCampoApenasLetras(event) {
-    var value = String.fromCharCode(event.which);
-    var pattern = new RegExp(/[a-zåäöëïüãõçÇãõáÁàÀéÉèÈíÍìÌóÓòÒúÚùÙ ]/i);
-    return pattern.test(value);
-    }
-    
-    
+      
 </script>

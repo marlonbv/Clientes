@@ -636,3 +636,17 @@ function validaPlaca(placa) {
 	}
 	return true;
     }
+    
+//Função que permite digitar apenas letras em um campo html 
+    function validaCampoApenasLetras(event) {
+    var value = String.fromCharCode(event.which);
+    var pattern = new RegExp(/[a-zåäöëïüãõçÇãõáÁàÀéÉèÈíÍìÌóÓòÒúÚùÙ' ]/i);
+    return pattern.test(value);
+    }
+
+//Função que permite digitar apenas números em um campo html 
+    function validaCampoApenasNumeros(event) {
+    var value = String.fromCharCode(event.which);
+    var pattern = new RegExp(/[123456789]/i);
+    return pattern.test(value);
+    }

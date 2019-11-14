@@ -254,7 +254,7 @@ include("inc/nav.php");
                                                     <fieldset id="formQuadroAreas"> 
                                                         <input id="JsonQuadroAreas" name="JsonQuadroAreas" type="hidden" value="[]">
                                                         <input id="quadroAreasId" name="quadroAreasId" type="hidden" value="">
-                                                        <input id="sequencialQuadroAreas" name="sequencialQuadroAreas" type="hidden" value="">
+                                                        <input id="sequencialQuadroAreas" name="sequencialQuadroAreas" type="hidden" value=""> 
                                                         <input id="descricaoQuadroAreas" name="descricaoQuadroAreas" type="hidden" value="">                          
 
                                                         <div class="row"> 
@@ -692,7 +692,7 @@ include("inc/scripts.php");
             $("#tableQuadroAreas tbody").append(row);
             row.append($('<td><label class="checkbox"><input type="checkbox" name="checkbox" value="' + jsonQuadroAreasArray[i].sequencialQuadroAreas + '"><i></i></label></td>'));
             row.append($('<td class="text-nowrap" onclick="carregaQuadroAreas(' + jsonQuadroAreasArray[i].sequencialQuadroAreas + ');">' + jsonQuadroAreasArray[i].descricaoQuadroAreas + '</td>'));
-            row.append($('<td class="text-nowrap">' + jsonQuadroAreasArray[i].tamanho + '</td>'));
+            row.append($('<td class="text-nowrap">' + jsonQuadroAreasArray[i].tamanhoQuadrados + '</td>'));
         }
     }
 

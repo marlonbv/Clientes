@@ -32,6 +32,7 @@ $page_title = "Cliente";
 //Note: all css files are inside css/ folder
 $page_css[] = "your_style.css";
 include("inc/header.php");
+include "gir_script.js";
 
 //include left panel (navigation)
 //follow the tree in inc/config.ui.php
@@ -96,7 +97,7 @@ include("inc/ribbon.php");
                                                                 <label class="label" for="dtAdInicial">Data de admissão inicial</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dtAdInicial"  name="dtAdInicial" type="text" data-dateformat="dd/mm/yy" class="datepicker" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off">
+                                                                    <input id="dtAdInicial"  name="dtAdInicial" type="text" class="datepicker" value="" autocomplete="off">
                                                                 </label>
                                                             </section> 
                                                             <section class="col col-3">
@@ -171,12 +172,27 @@ include("inc/scripts.php");
             listarFiltro();
         });
         
+        //Faz com que o calendário fique em português.
         $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );
+        
+        //Máscara de dtAdInicial
+        $("input[id*='dtAdInicial']").inputmask({
+        mask: ['99/99/9999'],
+        placeholder: "X",
+        keepStatic: true
+        });  
+         
+        //Máscara de dtAdFinal
+        $("input[id*='dtAdFinal']").inputmask({
+        mask: ['99/99/9999'],
+        placeholder: "X",
+        keepStatic: true
+        });  
         
     }); 
     
-    
-    $('#nome').bind('keypress', apenasLetras);
+    //Permite apenas letras
+    $('#nome').bind('keypress', validaCampoApenasLetras); 
      
     $("#dtAdInicial").on("change", function () {
         
@@ -240,14 +256,7 @@ include("inc/scripts.php");
         var parametrosUrl = '&nomeFiltro=' + nomeFiltro + '&dtAdInicial=' + dtAdInicial + '&dtAdFinal=' + dtAdFinal ; 
         $('#resultadoBusca').load('clienteFiltroListagem.php?' + parametrosUrl);
     }
-    
-    //Função que permite digitar apenas letras em um campo html 
-    function apenasLetras(event) {
-    var value = String.fromCharCode(event.which);
-    var pattern = new RegExp(/[a-zåäöëïüãõçÇãõáÁàÀéÉèÈíÍìÌóÓòÒúÚùÙ ]/i);
-    return pattern.test(value);
-    }
-    
+     
     //Função que valida todas as datas
     function validaData(valor){
         var date=valor;
