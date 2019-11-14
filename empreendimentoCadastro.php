@@ -69,7 +69,7 @@ include("inc/nav.php");
                         </header>
                         <div>
                             <div class="widget-body no-padding">
-                                <form action="javascript:gravar()" class="smart-form client-form" id="formEmpreendimento" method="post">    
+                                <form action="javascript:gravar()" class="smart-form client-form" id="formEmpreendimento" method="post" autocomplete="off" />    
                                     <div class="panel-group smart-accordion-default" id="accordion">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
@@ -230,6 +230,7 @@ include("inc/nav.php");
                                                                 <label class="label" for="unidadeFederacao">UF</label>
                                                                 <label class="select">
                                                                     <select id="unidadeFederacao" name="unidadeFederacao" class="required" required> 
+                                                                        <option></option>
                                                                         <?php
                                                                         $reposit = new reposit();
                                                                         $tabela = "unidadeFederacao";
@@ -239,7 +240,7 @@ include("inc/nav.php");
                                                                         while (($row = odbc_fetch_array($result))) {
                                                                             $id = $row['sigla'];
                                                                             $descricao = mb_convert_encoding($row['unidadeFederacao'], 'UTF-8', 'HTML-ENTITIES');
-                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
+                                                                            echo '<option value=' . $id . '>' . $id . '</option>';
                                                                         }
                                                                         ?>
                                                                     </select>

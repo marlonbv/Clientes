@@ -40,6 +40,7 @@ $page_title = "Tabelas Básicas";
 $page_css[] = "your_style.css";
 include("inc/header.php");
 include "girComum.php";
+include "gir_script.js";
 
 //include left panel (navigation)
 //follow the tree in inc/config.ui.php
@@ -70,7 +71,7 @@ include("inc/nav.php");
                         </header>
                         <div>
                             <div class="widget-body no-padding">
-                                <form action="javascript:gravar()" class="smart-form client-form" id="formIncorporador" method="post">    
+                                <form action="javascript:gravar()" class="smart-form client-form" id="formIncorporador" method="post" autocomplete="off" />    
                                     <div class="panel-group smart-accordion-default" id="accordion">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
@@ -238,7 +239,7 @@ include("inc/nav.php");
                                                                         while (($row = odbc_fetch_array($result))) {
                                                                             $id = $row['sigla'];
                                                                             $descricao = mb_convert_encoding($row['unidadeFederacao'], 'UTF-8', 'HTML-ENTITIES');
-                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
+                                                                            echo '<option value=' . $id . '>' . $id . '</option>';
                                                                         }
                                                                         ?>
                                                                     </select>
@@ -354,6 +355,8 @@ include("inc/scripts.php");
             }
         }));
          
+         //Permite apenas numeros
+        $('#numero').bind('keypress', validaCampoApenasNumeros); 
          
         //Aplicando máscaras:  
         //CEP - Simples  

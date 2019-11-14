@@ -130,11 +130,13 @@ function recuperaCep(cep) {
                 var mensagem = piece[1];
                 var out = piece[1];
                 piece = out.split("^");
-                var logradouro = piece[0].trim();
-                var bairro = piece[1].trim();
-                var cidade = piece[2].trim();
-                var uf = piece[3].trim();
+                var tipoLogradouro = piece[0].trim();
+                var logradouro = piece[1].trim();
+                var bairro = piece[2].trim();
+                var cidade = piece[3].trim();
+                var uf = piece[4].trim();
 
+                $("#tipoLogradouro").val(tipoLogradouro);
                 $("#logradouro").val(logradouro);
                 $("#bairro").val(bairro);
                 $("#cidade").val(cidade);
