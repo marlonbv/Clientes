@@ -582,7 +582,9 @@ include("inc/scripts.php");
         $('#descricao').bind('keypress', apenasLetras);
         //Ações dos botões do Quadro de Áreas Sociais
         $('#btnAddQuadroAreas').on("click", function () {
+            if (validaQuadroAreas() === true){
             addQuadroAreas();
+            }
         });
 
         $('#btnRemoverQuadroAreas').on("click", function () {
@@ -623,15 +625,40 @@ include("inc/scripts.php");
             $("#descricaoQuadroAreas").val(item.descricaoQuadroAreas);
         }
 
-    }
-
+    } 
 
     function clearFormQuadroAreas() {
         $("#quadroAreasId").val('');
         $("#quadroAreas").val('');
+        $("#tamanhoQuadrados").val('');
         $("#descricaoQuadroAreas").val('');
         $("#sequencialQuadroAreas").val('');
     }
+    
+    function validaQuadroAreas(){
+        var existe = false; 
+        var quadroAreas = $('#quadroAreas').val();
+         var tamanhoQuadrados = $('#tamanhoQuadrados').val();
+        var sequencial = +$('#sequencialQuadroAreas').val();
+        
+        if (quadroAreas === '') {
+            smartAlert("Erro", "Informe um quadro de áreas", "error");
+            return false;
+        }
+        
+        if (tamanhoQuadrados === '') {
+            smartAlert("Erro", "Informe um tamanho para o quadro de áreas", "error");
+            return false;
+        }
+        
+        if (existe === true) {
+            smartAlert("Erro", "Este quadro de áreas já  foi cadastrado.", "error");
+            return false;
+        }
+        
+        return true;
+    }
+    
 
     function addQuadroAreas() {
         var item = $("#formQuadroAreas").toObject({mode: 'combine', skipEmpty: false, nodeCallback: processDataQuadroAreas});
