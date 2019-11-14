@@ -175,7 +175,7 @@ include("inc/nav.php");
                                                                 <label class="label">Início da construção</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dataInicioConstrucao"  name="dataInicioConstrucao" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off" required>
+                                                                    <input id="dataInicioConstrucao"  name="dataInicioConstrucao" type="text" class="datepicker required" required>
                                                                 </label>
                                                             </section>
 
@@ -183,7 +183,7 @@ include("inc/nav.php");
                                                                 <label class="label">Entrega das chaves</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dataEntregaChaves"  name="dataEntregaChaves" type="text" data-dateformat="dd/mm/yy" class="datepicker required" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off" required>
+                                                                    <input id="dataEntregaChaves"  name="dataEntregaChaves" type="text" data-dateformat="dd/mm/yy" class="datepicker required" required>
                                                                 </label>
                                                             </section>
 
@@ -196,9 +196,8 @@ include("inc/nav.php");
 
 
                                                             <fieldset id="formTipologia">
-
+                                                                
                                                                 <input id="JsonTipologia" name="JsonTipologia" type="hidden" value="[]">
-
                                                                 <input id="tipologiaId" name="tipologiaId" type="hidden" value="">
                                                                 <input id="sequencialTipologia" name="sequencialTipologia" type="hidden" value="">
                                                                 <input id="descricaoTipologia" name="descricaoTipologia" type="hidden" value=""> 
@@ -324,6 +323,7 @@ include("inc/scripts.php");
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.resize.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.time.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/inputmask/jquery.inputmask.js"></script>  
 
 <!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
@@ -356,9 +356,22 @@ include("inc/scripts.php");
             }
         }));
 
-       
-        $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );         
-            
+        //Deixa o menu de escolha das datas em português.
+        $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );     
+        
+        //Máscara das datas 
+        $("input[id*='dataInicioConstrucao']").inputmask({
+        mask: ['99/99/9999'],
+        placeholder: "X",
+        keepStatic: true
+        });
+        
+        $("input[id*='dataEntregaChaves']").inputmask({
+        mask: ['99/99/9999'],
+        placeholder: "X",
+        keepStatic: true
+        });
+        
         $('#formBloco').validate({
             // Rules for form validation
             rules: {
@@ -438,8 +451,7 @@ include("inc/scripts.php");
             var valor = $("#dataInicioConstrucao").val();
             var validacao = validaData(valor);
 
-            if(validacao === false){
-             smartAlert("Erro", "A data de nascimento não pode ser maior do que a data de hoje!", "error");   
+            if(validacao === false){   
              $("#dataInicioConstrucao").val("");
             }
             
