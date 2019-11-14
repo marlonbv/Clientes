@@ -349,7 +349,7 @@ include("inc/nav.php");
                                                             <section class="col col-3">
                                                                 <label class="label" for="cep">Cep</label>
                                                                 <label class="input">
-                                                                    <input id="cep"  name="cep" type="text" onchange="buscaCep()">
+                                                                    <input id="cep"  name="cep" type="text" onchange="buscaCep()" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-3">
@@ -361,13 +361,13 @@ include("inc/nav.php");
                                                             </section>  
 
                                                             <section class="col col-4">
-                                                                <label class="label" for="tipoEnd">Tipo Endereço</label>                                                                       
+                                                                <label class="label" for="tipoEndereco">Tipo Endereço</label>                                                                       
                                                                 <div class="inline-group">
                                                                     <label class="radio">
-                                                                        <input type="radio" id="tipoEnd" name="tipoEnd" value="1" checked><i></i>Residencial
+                                                                        <input type="radio" id="tipoEndereco1" name="tipoEndereco1" value="1" ><i></i>Residencial
                                                                     </label>
                                                                     <label class="radio">
-                                                                        <input type="radio" id="tipoEnd" name="tipoEnd"><i></i>Comercial
+                                                                        <input type="radio" id="tipoEndereco2" name="tipoEndereco2"><i></i>Comercial
                                                                     </label>
                                                                 </div>
                                                             </section> 
@@ -376,14 +376,14 @@ include("inc/nav.php");
                                                         <div class="row">
                                                             <section class="col col-3">
                                                                 <label class="label" for="tipoLogradouro">Tipo Logradouro</label>
-                                                                <label class="input">
-                                                                    <input id="tipoLogradouro"  name="tipoLogradouro" maxlength="15" type="text" value="">
+                                                                <label class="input" >
+                                                                    <input id="tipoLogradouro"  name="tipoLogradouro" maxlength="15" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-9">
                                                                 <label class="label" for="logradouro">Logradouro</label>
                                                                 <label class="input">
-                                                                    <input id="logradouro"  name="logradouro" maxlength="150" type="text" value="">
+                                                                    <input id="logradouro"  name="logradouro"  maxlength="150" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                         </div>                                                                
@@ -391,13 +391,13 @@ include("inc/nav.php");
                                                             <section class="col col-3">
                                                                 <label class="label" for="numero">Número</label>
                                                                 <label class="input">
-                                                                    <input id="numero"  name="numero" maxlength="20" type="text" value="">
+                                                                    <input id="numero"  name="numero" maxlength="20" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-9">
                                                                 <label class="label" for="complemento">Complemento</label>
                                                                 <label class="input">
-                                                                    <input id="complemento"  name="complemento" maxlength="50" type="text" value="">
+                                                                    <input id="complemento"  name="complemento" maxlength="50" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -405,13 +405,13 @@ include("inc/nav.php");
                                                             <section class="col col-4">
                                                                 <label class="label" for="bairro">Bairro</label>
                                                                 <label class="input">
-                                                                    <input id="bairro"  name="bairro" maxlength="30" type="text" value="">
+                                                                    <input id="bairro"  name="bairro" maxlength="30" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                             <section class="col col-4">
                                                                 <label class="label" for="unidadeFederacao">UF</label>
                                                                 <label class="select">
-                                                                    <select id="unidadeFederacao" name="unidadeFederacao"> 
+                                                                    <select id="unidadeFederacao" name="unidadeFederacao" class="required" required> 
                                                                         <option></option>
                                                                         <?php
                                                                         $reposit = new reposit();
@@ -431,7 +431,7 @@ include("inc/nav.php");
                                                             <section class="col col-4">
                                                                 <label class="label" for="cidade">Cidade</label>
                                                                 <label class="input">
-                                                                    <input id="cidade"  name="cidade" maxlength="30" type="text" value="">
+                                                                    <input id="cidade"  name="cidade" maxlength="30" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>                                                                                        
                                                         </div> 
@@ -439,7 +439,7 @@ include("inc/nav.php");
                                                             <section class="col col-12">
                                                                 <label class="label" for="referencia">Referência</label>
                                                                 <label class="input">
-                                                                    <input id="referencia"  name="referencia" maxlength="100" type="text" value="">
+                                                                    <input id="referencia"  name="referencia" maxlength="100" type="text" value="" class="required" required>
                                                                 </label>
                                                             </section>
                                                         </div>
@@ -504,8 +504,8 @@ include("inc/nav.php");
                                                         <div class="form-group">
 
                                                             <div class="row">
-                                                                <section class="col col-12">
-                                                                    <section class="col col-md-3">
+                                                                 
+                                                                    <section class="col col-3">
                                                                         <label class="label" for="redeSocial">Redes Sociais:</label>
                                                                         <select id="redeSocial" name="redeSocial" class="form-control">
                                                                             <option></option>
@@ -525,13 +525,13 @@ include("inc/nav.php");
 
                                                                         </select><i></i>
                                                                     </section>    
-                                                                    <section class="col col-md-5">
+                                                                   <section class="col col-6">
                                                                     <label class="label" for="redeLink">Link:</label> 
                                                                     <label class="input"><i class="icon-prepend fa fa-link"></i>
                                                                     <input id="redeLink" name="redeLink" type="text" maxlength="255" value="" class="form-control">
                                                                     </label> 
                                                                     </section>
-                                                                     <section class="col col-md-4">
+                                                                     <section class="col col-2">
                                                                         <label class="label"> </label>
                                                                         <button id="btnAddRedes" type="button" class="btn btn-primary">
                                                                             <i class="fa fa-plus"></i>
@@ -1500,7 +1500,7 @@ include("inc/scripts.php");
         var sequencial = +$('#sequencialTel').val();
         var telefonePrincipalMarcado = 0;
         if ($("#telefonePrincipal").is(':checked') === true) {
-            telefonePrincipalMarcado = 1;
+            telefonePrincipalMarcado = 1; 
         } 
         
         if ((tel === '') & (telFixo === '')) {
@@ -1514,9 +1514,8 @@ include("inc/scripts.php");
                     achou = true;
                     break;
                 }
-            }
-
-
+            } 
+              
             if (tel !== "") {
                 if ((jsonTelsArray[i].telefone === tel) && (jsonTelsArray[i].sequencialTel !== sequencial)) {
                     existe = true;
@@ -1536,12 +1535,15 @@ include("inc/scripts.php");
             smartAlert("Erro", "Telefone já cadastrado.", "error");
             return false;
         }
-
+        
+         
+        
         if ((achou === true) && (telefonePrincipalMarcado === 1)) {
             smartAlert("Erro", "Já existe um telefone principal na lista.", "error");
             return false;
         }
- 
+         
+        
         return true;
     }
 
@@ -1598,20 +1600,25 @@ include("inc/scripts.php");
 
         var existe = false;
 
-        var tipo = $("#tipoLogradouro").val();
+        var cep = $("#cep").val();
+        var tipoLogradouro = $("#tipoLogradouro").val();
         var logradouro = $("#logradouro").val();
         var numero = $("#numero").val();
         var bairro = $("#bairro").val();
         var unidadeFederacao = $("#unidadeFederacao").val();
         var cidade = $("#cidade").val();
 
-
+        if (cep === '') {
+            smartAlert("Erro", "Informe o cep.", "error");
+            return false;
+        }
+        
         if (tipoEnderecoMarcado === '') {
             smartAlert("Erro", "Informe o tipo de endereço.", "error");
             return false;
         }
 
-        if (tipo === '') {
+        if (tipoLogradouro === '') {
             smartAlert("Erro", "Informe o tipo do logradouro.", "error");
             return false;
         }
