@@ -647,6 +647,6 @@ function validaPlaca(placa) {
 //Função que permite digitar apenas números em um campo html 
     function validaCampoApenasNumeros(event) {
     var value = String.fromCharCode(event.which);
-    var pattern = new RegExp(/[123456789]/i);
+    var pattern = new RegExp(/[0123456789]/i);
     return pattern.test(value);
     }

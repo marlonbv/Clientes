@@ -95,7 +95,7 @@ include("inc/nav.php");
                                                             
                                                             <section class="col col-4">
                                                                 <label class="label">Posição Relativa da Unidade</label>
-                                                                <label class="input"><i class="icon-prepend  fa fa-comments-o"></i>
+                                                                <label class="input">
                                                                      <input  type="text" id="descricao" name="descricao" class="required" required/>
                                                                 </label>       
                                                             </section>  

@@ -95,7 +95,7 @@ include("inc/nav.php");
                                                             
                                                             <section class="col col-4">
                                                                 <label class="label">Natureza</label>
-                                                                <label class="input"><i class="icon-prepend  fa fa-neuter"></i>
+                                                                <label class="input"><i class="icon-prepend  fa fa-leaf"></i>
                                                                     <input  type="text" id="descricao" name="descricao" class="required" required/>
                                                                 </label>       
                                                             </section>  
