@@ -7,14 +7,14 @@ require_once("inc/config.ui.php");
 
 //colocar o tratamento de permissão sempre abaixo de require_once("inc/config.ui.php");
 $condicaoAcessarOK = (in_array('BLOCO_ACESSAR', $arrayPermissao, true));
-$condicaoGravarOK = (in_array('BLOCO_SALVAR', $arrayPermissao, true));
+$condicaoGravarOK = (in_array('BLOCO_GRAVAR', $arrayPermissao, true));
 $condicaoExcluirOK = (in_array('BLOCO_EXCLUIR', $arrayPermissao, true));
 
 if ($condicaoAcessarOK == false) {
     unset($_SESSION['login']);
     header("Location:login.php");
 }
-
+ 
 $esconderBtnGravar = "";
 if ($condicaoGravarOK === false) {
     $esconderBtnGravar = "none";

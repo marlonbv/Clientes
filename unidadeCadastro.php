@@ -638,8 +638,7 @@ include("inc/scripts.php");
     function validaQuadroAreas(){
         var existe = false; 
         var quadroAreas = $('#quadroAreas').val();
-         var tamanhoQuadrados = $('#tamanhoQuadrados').val();
-        var sequencial = +$('#sequencialQuadroAreas').val();
+        var tamanhoQuadrados = $('#tamanhoQuadrados').val();
         
         if (quadroAreas === '') {
             smartAlert("Erro", "Informe um quadro de áreas", "error");
@@ -661,7 +660,7 @@ include("inc/scripts.php");
     
 
     function addQuadroAreas() {
-        var item = $("#formQuadroAreas").toObject({mode: 'combine', skipEmpty: false, nodeCallback: processDataQuadroAreas});
+         var item = $("#formQuadroAreas").toObject({mode: 'combine', skipEmpty: false, nodeCallback: processDataQuadroAreas});
 
         if (item["sequencialQuadroAreas"] === '') {
             if (jsonQuadroAreasArray.length === 0) {
@@ -685,13 +684,13 @@ include("inc/scripts.php");
         });
 
         if (index >= 0)
-            jsonQuadroAreasArray.splice(index, 1, item);
+            jsonQuadroAreasArray.splice(index, 2, item);
         else
             jsonQuadroAreasArray.push(item);
 
         $("#JsonQuadroAreas").val(JSON.stringify(jsonQuadroAreasArray));
         fillTableQuadroAreas();
-        clearFormQuadroAreas();
+        clearFormQuadroAreas(); 
     }
 
     function excluirQuadroAreas() {

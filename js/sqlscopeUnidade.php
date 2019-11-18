@@ -63,11 +63,11 @@ function grava() {
     $inscricaoPredial = "'" . $inscricaoPredial . "'";
     
     //Lista 
-    $strArrayQuadroAreas = $_POST["JsonQuadroAreas"];
+    $strArrayQuadroAreas = $_POST["jsonQuadroAreasArray"];
     $arrayQuadroAreas = json_decode($strArrayQuadroAreas, true);
     $xmlQuadroAreas = "";
     $nomeXml = "ArrayOfQuadroAreas";
-    $nomeTabela = "unidade";
+    $nomeTabela = "unidadeQuadroAreas";
     if (sizeof($arrayQuadroAreas) > 0)
     {
         $xmlQuadroAreas = '<?xml version="1.0"?>';
@@ -78,7 +78,7 @@ function grava() {
             $xmlQuadroAreas = $xmlQuadroAreas . "<" . $nomeTabela . ">";
             foreach ($chave as $campo => $valor)
             {
-                if (($campo === "sequencialQuadroAreas") | ($campo === "jsonQuadroAreas"))
+                if (($campo === "sequencialQuadroAreas") || ($campo === "JsonQuadroAreas"))
                 {
                     continue;
                 }
@@ -134,7 +134,7 @@ function grava() {
       
      $sql = "unidade_Atualiza(" .$id .",".$empreendimento.",".$bloco.",".$vinculadas.",".$matricula.","
              .$unidade.",".$andar.",".$coluna.",".$tipologia.",".$posicaoSol.",".$vistaUnidade.",".$inscricaoPredial.
-             ",".$areaUtil.",".$areaPrivada.",".$areaComum.",".$areaTotal.")";
+             ",".$areaUtil.",".$areaPrivada.",".$areaComum.",".$areaTotal.",".$xmlQuadroAreas.")";
   
     $reposit = new reposit();
     $result = $reposit->Execprocedure($sql);

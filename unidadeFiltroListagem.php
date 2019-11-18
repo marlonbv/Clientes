@@ -23,22 +23,22 @@ include "js/repositorio.php";
                 <?php
                 
                 $unidadeFiltro = $_GET['unidadeFiltro']; 
-                $where = "WHERE (0 = 0)";
+                $where = "WHERE (0 = 0) ";
 
                 //Pega todas as variáveis do banco
-                $sql = "SELECT	U.codigo, U.andar, U.coluna, U.vinculadas,
-                U.areaUtil, U.areaPrivada, U.areaComum, U.areaTotal,
-                T.descricao AS tipologia, P.descricao AS posicaoSol, VU.descricao as vistaUnidade
-                FROM dbo.unidade U
-                INNER JOIN dbo.bloco B ON B.codigo = U.bloco
-                INNER JOIN dbo.tipologia T ON T.codigo = U.tipologia
-                INNER JOIN dbo.posicaoSol P ON P.codigo = U.posicaoSol
-                INNER JOIN dbo.vistaUnidade VU ON VU.codigo = U.vistaUnidade 
-                ";
+                $sql = "SELECT U.codigo, U.andar, U.coluna, U.vinculadas,
+                   U.areaUtil, U.areaPrivada, U.areaComum, U.areaTotal,
+                   T.descricao AS tipologia, P.descricao AS posicaoSol, VU.descricao as vistaUnidade
+                   FROM dbo.unidade U   
+                   INNER JOIN dbo.bloco B ON B.codigo = U.bloco
+                   INNER JOIN dbo.tipologia T ON T.codigo = U.tipologia
+                   INNER JOIN dbo.posicaoSol P ON P.codigo = U.posicaoSol
+                   INNER JOIN dbo.vistaUnidade VU ON VU.codigo = U.vistaUnidade
+                 ";
  
                 //Se a unidadeFiltro não for nulo
                 if ($unidadeFiltro != "") {
-                    $where = $where . " AND U.codigo like $unidadeFiltro ";
+                    $where = $where . " AND B.codigo like $unidadeFiltro ";
                 }
 
                 $sql = $sql . $where;
