@@ -69,7 +69,9 @@ function recuperaBloco(id) {
                 var estagioObra = piece[4];
                 var dataInicioConstrucao = piece[5];
                 var dataEntregaChaves = piece[6];
-                var observacao = piece[7]; 
+                var observacao = piece[7];
+                var unidades = piece[8];
+                var vinculadas = piece[9];
                 
                 //Atributos de bloco        
                 $("#codigo").val(codigo);
@@ -80,6 +82,8 @@ function recuperaBloco(id) {
                 $("#dataInicioConstrucao").val(dataInicioConstrucao);
                 $("#dataEntregaChaves").val(dataEntregaChaves);
                 $("#observacao").val(observacao);
+                $("#unidade").val(unidades);
+                $("#vinculadas").val(vinculadas);
                 $("#JsonTipologia").val(strArrayTipologia);
                 
                 fillTableTipologia();

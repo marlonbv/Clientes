@@ -109,7 +109,7 @@ include("inc/nav.php");
                                                             </section>
 
                                                             <section class="col col-3">
-                                                                <label class="label">Unidade</label>
+                                                                <label class="label">Unidades</label>
                                                                 <label class="input">
                                                                     <input  type="text" id="unidade" name="unidade" class="readonly" readonly/>
                                                                 </label>       

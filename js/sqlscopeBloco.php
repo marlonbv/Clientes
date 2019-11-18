@@ -150,7 +150,15 @@ function recupera() {
     }
 
     $id = $_POST['id'];
-    $sql = " SELECT * FROM dbo.bloco WHERE bloco.codigo = $id ";
+    $sql = " SELECT *, 
+            (SELECT COUNT(U.unidade) 
+            FROM dbo.unidade U
+            WHERE bloco = $id ) AS qtdUnidades,
+            (SELECT SUM(U.vinculadas)
+            FROM dbo.unidade U
+            WHERE bloco = $id ) AS qtdVinculadas
+            FROM dbo.bloco 
+            WHERE bloco.codigo = $id ";
 
      
 
@@ -164,6 +172,9 @@ function recupera() {
         $nome =  mb_convert_encoding($row['nome'],'UTF-8','HTML-ENTITIES');
         $natureza = +$row['natureza'];
         $estagioObra =  +$row['estagioObra'];
+        $unidades = (int) $row['qtdUnidades'];
+        $vinculadas =  (int) $row['qtdVinculadas'];
+        
         
         //Recupera a data e formata no padrão certo para data a data do inicioConstrucao & EntregaChaves
         $dataInicioConstrucao = mb_convert_encoding($row['dataInicioConstrucao'],'UTF-8','HTML-ENTITIES');
@@ -177,7 +188,7 @@ function recupera() {
         $observacao = mb_convert_encoding($row['observacao'],'UTF-8','HTML-ENTITIES');
           
         $out = $id . "^" . $empreendimento . "^" . $nome . "^" . $natureza . "^" . $estagioObra
-                . "^" .  $dataInicioConstrucao . "^" . $dataEntregaChaves . "^" . $observacao;
+                . "^" .  $dataInicioConstrucao . "^" . $dataEntregaChaves . "^" . $observacao ."^" . $unidades."^" . $vinculadas;
 
         if ($out == "") {
             echo "failed#";
