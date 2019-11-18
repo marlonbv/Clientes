@@ -44,7 +44,7 @@ function grava() {
  
     $empreendimento = +$_POST['empreendimento'];
     $vinculadas = +$_POST['vinculadas'];
-    $blocos = +$_POST['blocos'];
+    $bloco = +$_POST['bloco'];
     
     $matricula = $_POST['matricula'];
     $matricula = "'" . $matricula . "'";
@@ -103,16 +103,38 @@ function grava() {
     }
     $xmlQuadroAreas = "'" . $xmlQuadroAreas . "'";  
      
-    
-    $areaUtil = $_POST['areaUtil'];
-    
+        
+    //Checa se areaUtil está vazio, se sim atribui 0 pra ele.
+    $areaUtil = $_POST['areaUtil']; 
+        if ((empty($_POST['areaUtil'])) || (!isset($_POST['areaUtil'])) || (is_null($_POST['areaUtil']))) {
+            $areaUtil = 0;
+        }  
+    $areaUtil = str_replace(",",".", $areaUtil); 
+     
+    //Checa se areaPrivada está vazio, se sim atribui 0 pra ele.
     $areaPrivada = $_POST['areaPrivada'];
-  
-    $areaComum = +$_POST['areaComum'];
+        if ((empty($_POST['areaPrivada'])) || (!isset($_POST['areaPrivada'])) || (is_null($_POST['areaPrivada']))) {
+            $areaPrivada = 0;     
+        }
+    $areaPrivada = str_replace(",",".", $areaPrivada); 
+ 
+    //Checa se areaComum está vazio, se sim atribui 0 pra ele.
+    $areaComum = $_POST['areaComum'];
+        if ((empty($_POST['areaComum'])) || (!isset($_POST['areaComum'])) || (is_null($_POST['areaComum']))) {
+            $areaComum = 0;     
+        }
+    $areaComum = str_replace(",",".", $areaComum); 
     
-    $areaTotal = +$_POST['areaTotal'];
-    
-    $sql = "unidade_Atualiza(" .$id .",".$descricao. $xmlQuadroAreas")";
+    //Checa se areaTotal está vazio, se sim atribui 0 pra ele.
+    $areaTotal = $_POST['areaTotal'];
+        if ((empty($_POST['areaTotal'])) || (!isset($_POST['areaTotal'])) || (is_null($_POST['areaTotal']))) {
+            $areaTotal = 0;     
+        }
+    $areaTotal = str_replace(",",".", $areaTotal); 
+      
+     $sql = "unidade_Atualiza(" .$id .",".$empreendimento.",".$bloco.",".$vinculadas.",".$matricula.","
+             .$unidade.",".$andar.",".$coluna.",".$tipologia.",".$posicaoSol.",".$vistaUnidade.",".$inscricaoPredial.
+             ",".$areaUtil.",".$areaPrivada.",".$areaComum.",".$areaTotal.")";
   
     $reposit = new reposit();
     $result = $reposit->Execprocedure($sql);

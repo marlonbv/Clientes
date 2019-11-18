@@ -69,7 +69,7 @@ include("inc/nav.php");
                         </header>
                         <div>
                             <div class="widget-body no-padding"> 
-                                <form action="javascript:gravar()" class="smart-form client-form" id="formUnidade" method="post">    
+                                <form action="javascript:gravar()" class="smart-form client-form" id="formUnidade" method="post" >    
                                     <div class="panel-group smart-accordion-default" id="accordion">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
