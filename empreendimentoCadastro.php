@@ -84,6 +84,7 @@ include("inc/nav.php");
                                             <div id="collapseCadastro" class="panel-collapse collapse in">
                                                 <div class="panel-body no-padding">
                                                     <fieldset>
+                                                        <input id="codigo" name="codigo" type="text" class="hidden">
                                                         <div class="row">
                                                             
                                                             <section class="col col-8">
