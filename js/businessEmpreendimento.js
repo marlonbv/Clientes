@@ -37,9 +37,9 @@ function gravaEmpreendimento(id, nome, inscricaoMunicipal, engenheiroResponsavel
 
 }
 
-function recuperaSexo(id) {
+function recuperaEmpreendimento(id) {
     $.ajax({
-        url: 'js/sqlscopeSexo.php', //caminho do arquivo a ser executado
+        url: 'js/sqlscopeEmpreendimento.php', //caminho do arquivo a ser executado
         dataType: 'html', //tipo do retorno
         type: 'post', //metodo de envio
         data: {funcao: 'recupera', id: id}, //valores enviados ao script     
@@ -54,23 +54,49 @@ function recuperaSexo(id) {
                 return;
             } else {
                 data = data.replace(/failed/g, '');
-                var piece = data.split("#");
-
-                //Atributos de Cliente
+                var piece = data.split("#"); 
                 var mensagem = piece[0];
-                var out = piece[1];
-                //recupera telefone
-
-
+                var out = piece[1]; 
                 piece = out.split("^");
-                //Atributos de sexo 
-                var codigo = +piece[0];
-                var descricao = piece[1];
                 
-                //Atributos de sexo        
+                //Atributos de Empreendimento
+                var codigo = +piece[0];
+                var nome = piece[1];
+                var inscricaoMunicipal = piece[2];
+                var engenheiroResponsavel = piece[3];
+                var incorporador = +piece[4];
+                var observacao = piece[5];
+                var cep = piece[6];
+                var tipoLogradouro = piece[7];
+                var logradouro = piece[8];
+                var numero = +piece[9];
+                var complemento = piece[10];
+                var estado = piece[11];
+                var cidade = piece[12];
+                var bairro = piece[13];
+                var qtdBlocos = piece[14];
+                var qtdUnidades = piece[15];
+                var qtdVinculadas = piece[16];
+                
+                //Atributos de Empreendimento
                 $("#codigo").val(codigo);
-                $("#descricao").val(descricao);
-        
+                $("#nomeEmprendi").val(nome);
+                $("#insMunicipal").val(inscricaoMunicipal);
+                $("#engResponsavel").val(engenheiroResponsavel);
+                $("#incorGestor").val(incorporador);
+                $("#observacao").val(observacao);
+                $("#cep").val(cep);
+                $("#tipoLogradouro").val(tipoLogradouro);
+                $("#logradouro").val(logradouro);
+                $("#numero").val(numero);
+                $("#complemento").val(complemento);
+                $("#unidadeFederacao").val(estado);
+                $("#cidade").val(cidade);
+                $("#bairro").val(bairro);
+                $("#blocos").val(qtdBlocos);
+                $("#unidade").val(qtdUnidades);
+                $("#vinculadas").val(qtdVinculadas);
+                 
                 return;
             }
         },
@@ -125,41 +151,7 @@ function recuperaCep(cep) {
     });
 
     return;
-}
-
-function recuperaDescricao(id) {
-    $.ajax({
-        url: 'js/sqlscopeSexo.php', //caminho do arquivo a ser executado
-        dataType: 'html', //tipo do retorno
-        type: 'post', //metodo de envio
-        data: {funcao: 'recuperaDescricao', id: id}, //valores enviados ao script     
-        beforeSend: function () {
-            //função chamada antes de realizar o ajax
-        },
-        complete: function () {
-            //função executada depois de terminar o ajax
-        },
-        success: function (data, textStatus) {
-            if (data.indexOf('failed') > -1) {
-                return;
-            } else {
-                data = data.replace(/failed/g, '');
-                
-                if(data !== "" ){
-                smartAlert("Atenção", "A descricao já foi registrada.", "error"); 
-                $("#descricao").val("");
-                }
-                
-                return;
-            }
-        },
-        error: function (xhr, er) {
-            //tratamento de erro
-        }
-    });
-
-    return;
-}
+} 
 
 function excluirSexo(id) {
     $.ajax({

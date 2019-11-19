@@ -119,9 +119,21 @@ function recupera() {
     }
 
     $id = $_POST['id'];
-    $sql = " SELECT * FROM dbo.sexo WHERE sexo.codigo = $id ";
-
-     
+    $sql = "SELECT *, (
+            SELECT COUNT(*)
+            FROM dbo.bloco B
+            WHERE B.empreendimento = E.codigo) 
+            AS qtdBlocos,
+            (SELECT COUNT(*)
+            FROM dbo.unidade U
+            WHERE U.empreendimento = E.codigo)
+            AS qtdUnidades,
+            (SELECT SUM(U.vinculadas) 
+            FROM dbo.unidade U
+            WHERE U.empreendimento = E.codigo)
+            AS qtdVinculadas
+            FROM dbo.empreendimento E
+            WHERE E.codigo = $id "; 
 
     $reposit = new reposit();
     $result = $reposit->RunQuery($sql); 
@@ -129,57 +141,27 @@ function recupera() {
     $out = "";
     if (($row = odbc_fetch_array($result))) {
         $id = +$row['codigo'];
-        $descricao = mb_convert_encoding($row['descricao'],'UTF-8','HTML-ENTITIES');
-         
+        $nome = mb_convert_encoding($row['nome'],'UTF-8','HTML-ENTITIES');
+        $inscricaoMunicipal = mb_convert_encoding($row['inscricaoMunicipal'],'UTF-8','HTML-ENTITIES');
+        $engenheiroResponsavel = mb_convert_encoding($row['engenheiroResponsavel'],'UTF-8','HTML-ENTITIES');
+        $incorporador = +$row['incorporador'];
+        $observacao = mb_convert_encoding($row['observacao'],'UTF-8','HTML-ENTITIES');
+        $cep = mb_convert_encoding($row['cep'],'UTF-8','HTML-ENTITIES');
+        $tipoLogradouro = mb_convert_encoding($row['tipoLogradouro'],'UTF-8','HTML-ENTITIES');
+        $logradouro = mb_convert_encoding($row['logradouro'],'UTF-8','HTML-ENTITIES');
+        $numero = +$row['numero'];
+        $complemento = mb_convert_encoding($row['complemento'],'UTF-8','HTML-ENTITIES');
+        $estado = mb_convert_encoding($row['estado'],'UTF-8','HTML-ENTITIES');
+        $cidade = mb_convert_encoding($row['cidade'],'UTF-8','HTML-ENTITIES');
+        $bairro = mb_convert_encoding($row['bairro'],'UTF-8','HTML-ENTITIES');
+        $qtdBlocos = +$row['qtdBlocos'];
+        $qtdUnidades = +$row['qtdUnidades'];
+        $qtdVinculadas = +$row['qtdVinculadas'];
 
-        $out = $id . "^" . $descricao;
-
-        if ($out == "") {
-            echo "failed#";
-        }
-        if ($out != '') {
-            echo "sucess#" . $out . " ";
-        }
-        return;
-    }
-
- }
- 
-  function recuperaDescricao() {
-    $condicaoId = !((empty($_POST["id"])) || (!isset($_POST["id"])) || (is_null($_POST["id"])));
-    $condicaoLogin = !((empty($_POST["loginPesquisa"])) || (!isset($_POST["loginPesquisa"])) || (is_null($_POST["loginPesquisa"])));
-
-    if (($condicaoId === false) && ($condicaoLogin === false)) {
-        $mensagem = "Nenhum parâmetro de pesquisa foi informado.";
-        echo "failed#" . $mensagem . ' ';
-        return;
-    }
-
-    if (($condicaoId === true) && ($condicaoLogin === true)) {
-        $mensagem = "Somente 1 parâmetro de pesquisa deve ser informado.";
-        echo "failed#" . $mensagem . ' ';
-        return;
-    }
-
-    if ($condicaoId) {
-        $usuarioIdPesquisa = $_POST["id"];
-    }
-
-    if ($condicaoLogin) {
-        $loginPesquisa = $_POST["loginPesquisa"];
-    }
-
-    $id = $_POST['id'];
-    $sql = " SELECT * FROM dbo.sexo S WHERE S.descricao = '$id' ";
- 
-    $reposit = new reposit();
-    $result = $reposit->RunQuery($sql); 
-
-    $out = "";
-    if (($row = odbc_fetch_array($result))) {
-        $id = $row['descricao']; 
-          
-        $out = $id;
+        $out = $id . "^" . $nome . "^" . $inscricaoMunicipal . "^" . $engenheiroResponsavel . "^" . $incorporador
+                . "^" . $observacao . "^" . $cep . "^" . $tipoLogradouro . "^" . $logradouro . "^" . $numero
+                . "^" . $complemento . "^" . $estado . "^" . $cidade . "^" . $bairro. "^" . $qtdBlocos . "^" .
+                $qtdUnidades . "^" . $qtdVinculadas;
 
         if ($out == "") {
             echo "failed#";
@@ -191,11 +173,12 @@ function recupera() {
     }
 
  }
+  
  
  function excluir() {
 
     $reposit = new reposit();
-    $possuiPermissao = $reposit->PossuiPermissao("SEXO_ACESSAR|SEXO_EXCLUIR");
+    $possuiPermissao = $reposit->PossuiPermissao("EMPREENDIMENTO_ACESSAR|EMPREENDIMENTO_EXCLUIR");
 
     if ($possuiPermissao === 0) {
         $mensagem = "O usuário não tem permissão para excluir!";
@@ -206,13 +189,13 @@ function recupera() {
     $id = +$_POST["id"];
 
     if ((empty($_POST['id']) || (!isset($_POST['id'])) || (is_null($_POST['id'])))) {
-        $mensagem = "Selecione um sexo.";
+        $mensagem = "Selecione um empreendimento.";
         echo "failed#" . $mensagem . ' ';
         return;
     }
  
 
-    $sql = "sexo_Deleta (" . $id . ") ";
+    $sql = "empreendimento_Deleta (" . $id . ") ";
 
     $repositCliente = new reposit();
     $result = $repositCliente->Execprocedure($sql);
