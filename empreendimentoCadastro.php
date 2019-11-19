@@ -436,7 +436,7 @@ include("inc/scripts.php");
 
             if (id === 0) {
                 smartAlert("Atenção", "Selecione um registro para excluir !", "error");
-                $("#descricao").focus();
+                 
                 return;
             }
 
@@ -454,14 +454,6 @@ include("inc/scripts.php");
 
         });
         
-        $("#descricao").on("change", function () {
-         var idd = $("#descricao").val();
-                recuperaDescricao(idd);
-          
-        });
-        
-       $('#descricao').bind('keypress', apenasLetras);
-        
         carregaPagina();
 
     });
@@ -476,8 +468,7 @@ include("inc/scripts.php");
             if (idd !== "") {
                 recuperaEmpreendimento(idd);
             }
-        }
-        $("#descricao").focus();
+        } 
     }
 
     function buscaCep(){
