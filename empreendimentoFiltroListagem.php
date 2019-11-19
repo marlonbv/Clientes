@@ -20,13 +20,17 @@ include "js/repositorio.php";
                 $where = "WHERE (0 = 0)";
 
                 //Pega todas as variáveis do banco
-                $sql = "SELECT DISTINCT E.nome, I.razaoSocial AS incorporador, (
-                        SELECT DISTINCT COUNT(*) FROM dbo.bloco B 
-                        INNER JOIN dbo.empreendimento E ON B.empreendimento = E.codigo
-                        WHERE E.nome = '$empreendimentoFiltro'
-                        )AS qtdBlocos
-                        FROM dbo.bloco B  
-                        INNER JOIN dbo.empreendimento E ON B.empreendimento = E.codigo
+                $sql = "SELECT E.nome, E.codigo, I.razaoSocial AS incorporador,
+                        (SELECT COUNT(*) FROM dbo.bloco B
+                        WHERE B.empreendimento = E.codigo
+                        )AS qtdBlocos, 
+                        (SELECT COUNT(*) FROM dbo.unidade U
+                        WHERE U.empreendimento = E.codigo)
+                        AS qtdUnidades,
+                        (SELECT SUM(U.vinculadas) FROM dbo.unidade U
+                        WHERE U.empreendimento = E.codigo) 
+                        AS qtdVinculadas
+                        FROM dbo.empreendimento E
                         INNER JOIN dbo.incorporador I ON E.incorporador = I.codigo ";
  
                 //Se o empreendimentoFiltro não for nulo
@@ -47,8 +51,8 @@ include "js/repositorio.php";
                     $nome = mb_convert_encoding($row['nome'],'UTF-8','HTML-ENTITIES');
                     $incorporadorGestor = mb_convert_encoding($row['incorporador'],'UTF-8','HTML-ENTITIES');
                     $blocos = +$row[qtdBlocos]; 
-                    $unidades = "Modique aqui depois, não esqueça";
-                    $vagas = "Modique aqui depois, não esqueça";
+                    $unidades = +$row[qtdUnidades];
+                    $vagas = +$row[qtdVinculadas];
 
                     echo '<tr >';
                     echo '<td class="text-left"><a href="empreendimentoCadastro.php?codigo=' . $id . '">' . $nome . '</a></td>';
