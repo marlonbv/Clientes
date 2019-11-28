@@ -44,12 +44,12 @@ include("inc/nav.php");
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- MAIN PANEL -->
 <div id="main" role="main">
-<?php
+    <?php
 //configure ribbon (breadcrumbs) array("name"=>"url"), leave url empty if no url
 //$breadcrumbs["New Crumb"] => "http://url.com"
-$breadcrumbs["Controle de Permissão"] = "";
-include("inc/ribbon.php");
-?>
+    $breadcrumbs["Controle de Permissão"] = "";
+    include("inc/ribbon.php");
+    ?>
 
     <!-- MAIN CONTENT -->
     <div id="content">
@@ -94,20 +94,20 @@ include("inc/ribbon.php");
                                                                 </label>
                                                             </section> 
                                                             <section class="col col-3">
-                                                                <label class="label" for="dtAdInicial">Data de admissão inicial</label>
+                                                                <label class="label">Data de admissão inicial</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dtAdInicial"  name="dtAdInicial" type="text" class="datepicker" value="" autocomplete="off">
+                                                                    <input id="dtAdInicial"  name="dtAdInicial" type="text" data-dateformat="dd/mm/yy" class="datepicker text-center" value="" data-mask="99/99/9999" data-mask-placeholder= "-">
                                                                 </label>
-                                                            </section> 
+                                                            </section>
                                                             <section class="col col-3">
-                                                                <label class="label" for="dtAdFinal">Data de admissão Final</label>
+                                                                <label class="label">Data de admissão Final</label>
                                                                 <label class="input">
                                                                     <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dtAdFinal"  name="dtAdFinal" type="text" data-dateformat="dd/mm/yy" class="datepicker" value="" data-mask="99/99/9999" data-mask-placeholder= "X" autocomplete="off">
+                                                                    <input id="dtAdFinal"  name="dtAdFinal" type="text" data-dateformat="dd/mm/yy" class="datepicker text-center" value="" data-mask="99/99/9999" data-mask-placeholder= "-">
                                                                 </label>
-                                                            </section> 
-                                                             
+                                                            </section>
+
                                                             <section class="col col-1">
                                                                 <label class="label">&nbsp;</label>
                                                                 <button id="btnSearch" name= "btnSearch" type="button" class="btn btn-primary" title="Buscar">
@@ -171,132 +171,113 @@ include("inc/scripts.php");
         $('#btnSearch').on("click", function () {
             listarFiltro();
         });
-        
+
         //Faz com que o calendário fique em português.
-        $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );
-        
-        //Máscara de dtAdInicial
-        $("input[id*='dtAdInicial']").inputmask({
-        mask: ['99/99/9999'],
-        placeholder: "X",
-        keepStatic: true
-        });  
-         
-        //Máscara de dtAdFinal
-        $("input[id*='dtAdFinal']").inputmask({
-        mask: ['99/99/9999'],
-        placeholder: "X",
-        keepStatic: true
-        });  
-        
-    }); 
-    
+        $.datepicker.setDefaults($.datepicker.regional[ "pt-BR" ]);
+
+    });
+
     //Permite apenas letras
-    $('#nome').bind('keypress', validaCampoApenasLetras); 
-     
+    $('#nome').bind('keypress', validaCampoApenasLetras);
+
     $("#dtAdInicial").on("change", function () {
-        
+
         // Verificação de todas as datas
         var valor = $("#dtAdInicial").val();
         var validacao = validaData(valor);
-        
-        if(validacao === false){
-             $("#dtAdInicial").val("");
+
+        if (validacao === false) {
+            $("#dtAdInicial").val("");
         }
-        
+
         //Verificar se AdInicial > AdFinal
         valor = formataData(valor);
         var valorFinal = $("#dtAdFinal").val();
-        valorFinal = formataData(valorFinal); 
-        
-        if(valor > valorFinal){
+        valorFinal = formataData(valorFinal);
+
+        if (valor > valorFinal) {
             smartAlert("Erro", "A data de admissão inicial não pode ser maior do que a final!", "error");
             $("#dtAdInicial").val("");
-            
-        } 
-        
-    }); 
-        
-        
+
+        }
+
+    });
+
+
     // Ao clicar fora do campo data de admissão final, faça....    
-    $("#dtAdFinal").on("change",function(){
+    $("#dtAdFinal").on("change", function () {
         // Verificação de todas as datas
         var valor = $("#dtAdFinal").val();
-        var validacao = validaData(valor); 
-        
+        var validacao = validaData(valor);
+
         //Se a verificação for falsa, limpe o campo
-        if(validacao === false){
+        if (validacao === false) {
             $("#dtAdFinal").val("");
-    }
-    
-       //Verificar se AdInicial > AdFinal
+        }
+
+        //Verificar se AdInicial > AdFinal
         valor = formataData(valor);
         var valorInicial = $("#dtAdInicial").val();
-        valorInicial = formataData(valorInicial); 
-        
-        if(valorInicial > valor){
+        valorInicial = formataData(valorInicial);
+
+        if (valorInicial > valor) {
             smartAlert("Erro", "A data de admissão inicial não pode ser maior do que a final!", "error");
             $("#dtAdInicial").val("");
-            
+
         }
-     
-    }); 
+
+    });
 
 
     function listarFiltro() {
         var nomeFiltro = $('#nome').val();
-        var dtAdInicial = $('#dtAdInicial').val(); 
-        var dtAdFinal = $('#dtAdFinal').val(); 
-        
+        var dtAdInicial = $('#dtAdInicial').val();
+        var dtAdFinal = $('#dtAdFinal').val();
+
         if (nomeFiltro !== "") {
             nomeFiltro = nomeFiltro.replace(/^\s+|\s+$/g, "");
             nomeFiltro = encodeURIComponent(nomeFiltro);
         }
-         
-        var parametrosUrl = '&nomeFiltro=' + nomeFiltro + '&dtAdInicial=' + dtAdInicial + '&dtAdFinal=' + dtAdFinal ; 
+
+        var parametrosUrl = '&nomeFiltro=' + nomeFiltro + '&dtAdInicial=' + dtAdInicial + '&dtAdFinal=' + dtAdFinal;
         $('#resultadoBusca').load('clienteFiltroListagem.php?' + parametrosUrl);
     }
-     
+
     //Função que valida todas as datas
-    function validaData(valor){
-        var date=valor;
-	var ardt=new Array;
-	var ExpReg=new RegExp("(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}");
-	ardt=date.split("/");
-	erro=false;
-	if ( date.search(ExpReg)==-1){
-		erro = true;
-		}
-	else if (((ardt[1]==4)||(ardt[1]==6)||(ardt[1]==9)||(ardt[1]==11))&&(ardt[0]>30))
-		erro = true;
-	else if ( ardt[1]==2) {
-		if ((ardt[0]>28)&&((ardt[2]%4)!=0))
-			erro = true;
-		if ((ardt[0]>29)&&((ardt[2]%4)==0))
-			erro = true;
-	}
-	if (erro) {
-		smartAlert("Erro", "O valor inserido é inválido.", "error"); 
-		return false;
-	}
-	return true;
+    function validaData(valor) {
+        var date = valor;
+        var ardt = new Array;
+        var ExpReg = new RegExp("(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}");
+        ardt = date.split("/");
+        erro = false;
+        if (date.search(ExpReg) == -1) {
+            erro = true;
+        } else if (((ardt[1] == 4) || (ardt[1] == 6) || (ardt[1] == 9) || (ardt[1] == 11)) && (ardt[0] > 30))
+            erro = true;
+        else if (ardt[1] == 2) {
+            if ((ardt[0] > 28) && ((ardt[2] % 4) != 0))
+                erro = true;
+            if ((ardt[0] > 29) && ((ardt[2] % 4) == 0))
+                erro = true;
+        }
+        if (erro) {
+            smartAlert("Erro", "O valor inserido é inválido.", "error");
+            return false;
+        }
+        return true;
     }
-    
-    function formataData(valor){
-        var y = (parseInt(valor.split('/')[2]));
-        var m = (parseInt(valor.split('/')[1]) - 1);
-        var d = (parseInt(valor.split('/')[0]));
-        valor = new Date(y,m,d); 
-        return valor;
+
+
     }
-    
+
 </script>    
 
 
 //<?php
 //	//include footer
 //	include("inc/google-analytics.php"); 
-//?>
+//
+?>
 
 
 

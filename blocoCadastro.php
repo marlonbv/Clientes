@@ -14,7 +14,7 @@ if ($condicaoAcessarOK == false) {
     unset($_SESSION['login']);
     header("Location:login.php");
 }
- 
+
 $esconderBtnGravar = "";
 if ($condicaoGravarOK === false) {
     $esconderBtnGravar = "none";
@@ -71,225 +71,224 @@ include("inc/nav.php");
                         <div>
                             <div class="widget-body no-padding">
                                 <form action="javascript:gravar()" class="smart-form client-form" id="formBloco" method="post" autocomplete="off" />    
-                                    <div class="panel-group smart-accordion-default" id="accordion">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseCadastro" class="" id="accordionCadastro">
-                                                        <i class="fa fa-lg fa-angle-down pull-right"></i>
-                                                        <i class="fa fa-lg fa-angle-up pull-right"></i>
-                                                        Cadastro do bloco 
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseCadastro" class="panel-collapse collapse in">
-                                                <div class="panel-body no-padding">
-                                                    <fieldset>
-                                                        <div class="row"> 
-                                                            <input id="codigo" name="codigo" type="hidden"> 
-                                                            <section class="col col-9">
-                                                                <label class="label">Empreendimento</label>
-                                                                <label class="select">
-                                                                    <select id="empreendimento" name="empreendimento" class="required" required> 
-                                                                        <option></option>
-                                                                        <?php
-                                                                        $reposit = new reposit();
-                                                                        $tabela = "empreendimento";
+                                <div class="panel-group smart-accordion-default" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseCadastro" class="" id="accordionCadastro">
+                                                    <i class="fa fa-lg fa-angle-down pull-right"></i>
+                                                    <i class="fa fa-lg fa-angle-up pull-right"></i>
+                                                    Cadastro do bloco 
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseCadastro" class="panel-collapse collapse in">
+                                            <div class="panel-body no-padding">
+                                                <fieldset>
+                                                    <div class="row"> 
+                                                        <input id="codigo" name="codigo" type="hidden"> 
+                                                        <section class="col col-9">
+                                                            <label class="label">Empreendimento</label>
+                                                            <label class="select">
+                                                                <select id="empreendimento" name="empreendimento" class="required" required> 
+                                                                    <option></option>
+                                                                    <?php
+                                                                    $reposit = new reposit();
+                                                                    $tabela = "empreendimento";
 
-                                                                        $result = $reposit->SelectAll($tabela . "|" . "");
+                                                                    $result = $reposit->SelectAll($tabela . "|" . "");
 
-                                                                        while (($row = odbc_fetch_array($result))) {
-                                                                            $id = $row['codigo'];
-                                                                            $nome = mb_convert_encoding($row['nome'], 'UTF-8', 'HTML-ENTITIES');
-                                                                            echo '<option value=' . $id . '>' . $nome . '</option>';
-                                                                        }
-                                                                        ?>
-                                                                    </select><i></i>
-                                                                </label> 
-                                                            </section>
+                                                                    while (($row = odbc_fetch_array($result))) {
+                                                                        $id = $row['codigo'];
+                                                                        $nome = mb_convert_encoding($row['nome'], 'UTF-8', 'HTML-ENTITIES');
+                                                                        echo '<option value=' . $id . '>' . $nome . '</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select><i></i>
+                                                            </label> 
+                                                        </section>
 
-                                                            <section class="col col-3">
-                                                                <label class="label">Unidades</label>
-                                                                <label class="input">
-                                                                    <input  type="text" id="unidade" name="unidade" class="readonly" readonly/>
-                                                                </label>       
-                                                            </section> 
-                                                        </div>
-                                                        <div class="row">
-                                                            
-                                                            <section class="col col-9">
-                                                                <label class="label">Nome do bloco</label>
-                                                                <label class="input">
-                                                                    <input  type="text" id="nome" name="nome" class="required" required/>
-                                                                </label>       
-                                                            </section>  
-
-                                                            <section class="col col-3">
-                                                                <label class="label">Vinculadas</label>
-                                                                <label class="input">
-                                                                    <input  type="text" id="vinculadas" name="vinculadas" class="readonly" readonly/>
-                                                                </label>       
-                                                            </section> 
-                                                        </div>
-                                                        <div class="row">
-                                                            <section class="col col-6">
-                                                                <label class="label">Natureza</label>
-                                                                <label class="select">
-                                                                    <select id="natureza" name="natureza" class="required" required> 
-                                                                        <option></option>
-                                                                        <?php
-                                                                        $reposit = new reposit();
-                                                                        $tabela = "natureza";
-
-                                                                        $result = $reposit->SelectAll($tabela . "|" . "");
-
-                                                                        while (($row = odbc_fetch_array($result))) {
-                                                                            $id = $row['codigo'];
-                                                                            $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
-                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
-                                                                        }
-                                                                        ?>
-                                                                    </select><i></i>
-                                                                </label>        
-                                                            </section> 
-
-                                                            <section class="col col-6">
-                                                                <label class="label">Estágio da Obra</label>
-                                                                <label class="select">
-                                                                    <select id="estagioObra" name="estagioObra" class="required" required> 
-                                                                        <option></option>
-                                                                        <?php
-                                                                        $reposit = new reposit();
-                                                                        $tabela = "estagioObra";
-
-                                                                        $result = $reposit->SelectAll($tabela . "|" . "");
-
-                                                                        while (($row = odbc_fetch_array($result))) {
-                                                                            $id = $row['codigo'];
-                                                                            $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
-                                                                            echo '<option value=' . $id . '>' . $descricao . '</option>';
-                                                                        }
-                                                                        ?>
-                                                                    </select><i></i>
-                                                                </label>        
-                                                            </section> 
-                                                        </div>
-                                                        <div class="row">
                                                         <section class="col col-3">
-                                                                <label class="label">Início da construção</label>
-                                                                <label class="input">
-                                                                    <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dataInicioConstrucao"  name="dataInicioConstrucao" type="text" class="datepicker required" required>
-                                                                </label>
-                                                            </section>
+                                                            <label class="label">Unidades</label>
+                                                            <label class="input">
+                                                                <input  type="text" id="unidade" name="unidade" class="readonly" readonly/>
+                                                            </label>       
+                                                        </section> 
+                                                    </div>
+                                                    <div class="row">
 
-                                                            <section class="col col-3">
-                                                                <label class="label">Entrega das chaves</label>
-                                                                <label class="input">
-                                                                    <i class="icon-append fa fa-calendar"></i>
-                                                                    <input id="dataEntregaChaves"  name="dataEntregaChaves" type="text" data-dateformat="dd/mm/yy" class="datepicker required" required>
-                                                                </label>
-                                                            </section>
+                                                        <section class="col col-9">
+                                                            <label class="label">Nome do bloco</label>
+                                                            <label class="input">
+                                                                <input  type="text" id="nome" name="nome" class="required" required/>
+                                                            </label>       
+                                                        </section>  
 
-                                                            <section class="col col-6">
-                                                                <label class="label">Observação</label>
-                                                                <label class="input">
-                                                                    <input id="observacao" name="observacao" type="text">
-                                                                </label>
-                                                            </section> 
-                                                        </div>
-                                                        <div class="row"> 
-                                                            <fieldset id="formTipologia">
-                                                                
-                                                                <input id="JsonTipologia" name="JsonTipologia" type="hidden" value="[]">
-                                                                <input id="tipologiaId" name="tipologiaId" type="hidden" value="">
-                                                                <input id="sequencialTipologia" name="sequencialTipologia" type="hidden" value="">
-                                                                <input id="descricaoTipologia" name="descricaoTipologia" type="hidden" value=""> 
-                                                                <div class="form-group">
+                                                        <section class="col col-3">
+                                                            <label class="label">Vinculadas</label>
+                                                            <label class="input">
+                                                                <input  type="text" id="vinculadas" name="vinculadas" class="readonly" readonly/>
+                                                            </label>       
+                                                        </section> 
+                                                    </div>
+                                                    <div class="row">
+                                                        <section class="col col-6">
+                                                            <label class="label">Natureza</label>
+                                                            <label class="select">
+                                                                <select id="natureza" name="natureza" class="required" required> 
+                                                                    <option></option>
+                                                                    <?php
+                                                                    $reposit = new reposit();
+                                                                    $tabela = "natureza";
 
-                                                                    <div class="row">
-                                                                        <section class="col col-6"> 
-                                                                            <label class="label">Tipologia:</label>
-                                                                            <select id="tipologia" name="tipologia" class="form-control">
-                                                                                <option></option>
-                                                                                <?php
-                                                                                //include "js/repositorio.php";        
-                                                                                $reposit = new reposit();
-                                                                                $tabela = "tipologia";
+                                                                    $result = $reposit->SelectAll($tabela . "|" . "");
 
-                                                                                $result = $reposit->SelectAll($tabela . "|" . "");
+                                                                    while (($row = odbc_fetch_array($result))) {
+                                                                        $id = $row['codigo'];
+                                                                        $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
+                                                                        echo '<option value=' . $id . '>' . $descricao . '</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select><i></i>
+                                                            </label>        
+                                                        </section> 
 
-                                                                                while (($row = odbc_fetch_array($result))) {
-                                                                                    $id = $row['codigo'];
-                                                                                    $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
-                                                                                    echo '<option value=' . $id . '>' . $descricao . '</option>';
-                                                                                }
-                                                                                ?>
+                                                        <section class="col col-6">
+                                                            <label class="label">Estágio da Obra</label>
+                                                            <label class="select">
+                                                                <select id="estagioObra" name="estagioObra" class="required" required> 
+                                                                    <option></option>
+                                                                    <?php
+                                                                    $reposit = new reposit();
+                                                                    $tabela = "estagioObra";
 
-                                                                            </select><i></i>
-                                                                        </section>     
-                                                                        <section class="col col-md-4">
-                                                                            <label class="label"> </label>
-                                                                            <button id="btnAddTipologia" type="button" class="btn btn-primary">
-                                                                                <i class="fa fa-plus"></i>
-                                                                            </button>
-                                                                            <button id="btnRemoverTipologia" type="button" class="btn btn-danger">
-                                                                                <i class="fa fa-minus"></i>
-                                                                            </button>
-                                                                        </section> 
-                                                                    </div>
+                                                                    $result = $reposit->SelectAll($tabela . "|" . "");
+
+                                                                    while (($row = odbc_fetch_array($result))) {
+                                                                        $id = $row['codigo'];
+                                                                        $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
+                                                                        echo '<option value=' . $id . '>' . $descricao . '</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select><i></i>
+                                                            </label>        
+                                                        </section> 
+                                                    </div>
+                                                    <div class="row">
+                                                        <section class="col col-3">
+                                                            <label class="label">Início da construção</label>
+                                                            <label class="input">
+                                                                <i class="icon-append fa fa-calendar"></i>
+                                                                <input id="dataInicioConstrucao"  name="dataInicioConstrucao" type="text" data-dateformat="dd/mm/yy" class="datepicker text-center required" value="" data-mask="99/99/9999" data-mask-placeholder= "-">
+                                                            </label>
+                                                        </section>
+                                                        <section class="col col-3">
+                                                            <label class="label">Entrega das chaves</label>
+                                                            <label class="input">
+                                                                <i class="icon-append fa fa-calendar"></i>
+                                                                <input id="dataEntregaChaves"  name="dataEntregaChaves" type="text" data-dateformat="dd/mm/yy" class="datepicker text-center required" value="" data-mask="99/99/9999" data-mask-placeholder= "-">
+                                                            </label>
+                                                        </section>
+
+                                                        <section class="col col-6">
+                                                            <label class="label">Observação</label>
+                                                            <label class="input">
+                                                                <input id="observacao" name="observacao" type="text">
+                                                            </label>
+                                                        </section> 
+                                                    </div>
+                                                    <div class="row"> 
+                                                        <fieldset id="formTipologia">
+
+                                                            <input id="JsonTipologia" name="JsonTipologia" type="hidden" value="[]">
+                                                            <input id="tipologiaId" name="tipologiaId" type="hidden" value="">
+                                                            <input id="sequencialTipologia" name="sequencialTipologia" type="hidden" value="">
+                                                            <input id="descricaoTipologia" name="descricaoTipologia" type="hidden" value=""> 
+                                                            <div class="form-group">
+
+                                                                <div class="row">
+                                                                    <section class="col col-6"> 
+                                                                        <label class="label">Tipologia:</label>
+                                                                        <select id="tipologia" name="tipologia" class="form-control">
+                                                                            <option></option>
+                                                                            <?php
+                                                                            //include "js/repositorio.php";        
+                                                                            $reposit = new reposit();
+                                                                            $tabela = "tipologia";
+
+                                                                            $result = $reposit->SelectAll($tabela . "|" . "");
+
+                                                                            while (($row = odbc_fetch_array($result))) {
+                                                                                $id = $row['codigo'];
+                                                                                $descricao = mb_convert_encoding($row['descricao'], 'UTF-8', 'HTML-ENTITIES');
+                                                                                echo '<option value=' . $id . '>' . $descricao . '</option>';
+                                                                            }
+                                                                            ?>
+
+                                                                        </select><i></i>
+                                                                    </section>     
+                                                                    <section class="col col-md-4">
+                                                                        <label class="label"> </label>
+                                                                        <button id="btnAddTipologia" type="button" class="btn btn-primary">
+                                                                            <i class="fa fa-plus"></i>
+                                                                        </button>
+                                                                        <button id="btnRemoverTipologia" type="button" class="btn btn-danger">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </button>
+                                                                    </section> 
                                                                 </div>
-                                                                <div class="table-responsive" style="min-height: 115px; width:100%; border: 1px solid #ddd; margin-bottom: 13px; overflow-x: auto;">
-                                                                    <table id="tableTipologia" class="table table-bordered table-striped table-condensed table-hover dataTable">
-                                                                        <thead>
-                                                                            <tr role="row">
-                                                                                <th></th>
-                                                                                <th class="text-left" style="min-width: 100%;">Tipologia</th>
+                                                            </div>
+                                                            <div class="table-responsive" style="min-height: 115px; width:100%; border: 1px solid #ddd; margin-bottom: 13px; overflow-x: auto;">
+                                                                <table id="tableTipologia" class="table table-bordered table-striped table-condensed table-hover dataTable">
+                                                                    <thead>
+                                                                        <tr role="row">
+                                                                            <th></th>
+                                                                            <th class="text-left" style="min-width: 100%;">Tipologia</th>
 
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
 
 
-                                                            </fieldset> 
-                                                    </fieldset>  
-                                                </div>    
-                                            </div>                                                        
-                                        </div> 
+                                                        </fieldset> 
+                                                </fieldset>  
+                                            </div>    
+                                        </div>                                                        
+                                    </div> 
 
-                                    </div>
-                                    <footer>
-                                        <button type="button" id="btnExcluir" class="btn btn-danger" aria-hidden="true" title="Excluir" style="display:<?php echo $esconderBtnExcluir ?>">
-                                            <span class="fa fa-trash" ></span>
-                                        </button>
-                                        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable" 
-                                             tabindex="-1" role="dialog" aria-describedby="dlgSimpleExcluir" aria-labelledby="ui-id-1" 
-                                             style="height: auto; width: 600px; top: 220px; left: 262px; display: none;">
-                                            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-                                                <span id="ui-id-2" class="ui-dialog-title">
-                                                </span>
-                                            </div>
-                                            <div id="dlgSimpleExcluir" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: auto;">
-                                                <p>CONFIRMA A EXCLUSÃO ? </p>
-                                            </div>
-                                            <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-                                                <div class="ui-dialog-buttonset">
-                                                </div>
+                                </div>
+                                <footer>
+                                    <button type="button" id="btnExcluir" class="btn btn-danger" aria-hidden="true" title="Excluir" style="display:<?php echo $esconderBtnExcluir ?>">
+                                        <span class="fa fa-trash" ></span>
+                                    </button>
+                                    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable" 
+                                         tabindex="-1" role="dialog" aria-describedby="dlgSimpleExcluir" aria-labelledby="ui-id-1" 
+                                         style="height: auto; width: 600px; top: 220px; left: 262px; display: none;">
+                                        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                                            <span id="ui-id-2" class="ui-dialog-title">
+                                            </span>
+                                        </div>
+                                        <div id="dlgSimpleExcluir" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: auto;">
+                                            <p>CONFIRMA A EXCLUSÃO ? </p>
+                                        </div>
+                                        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                                            <div class="ui-dialog-buttonset">
                                             </div>
                                         </div>
-                                        <button type="submit" id="btnGravar" class="btn btn-success" aria-hidden="true" title="Gravar" style="display:<?php echo $esconderBtnGravar ?>">
-                                            <span class="fa fa-floppy-o" ></span>
-                                        </button>
-                                        <button type="button" id="btnNovo" class="btn btn-primary" aria-hidden="true" title="Novo" style="display:<?php echo $esconderBtnGravar ?>">
-                                            <span class="fa fa-file-o" ></span>
-                                        </button>
-                                        <button type="button" id="btnVoltar" class="btn btn-default" aria-hidden="true" title="Voltar">
-                                            <span class="fa fa-backward " ></span>
-                                        </button>
-                                    </footer>
+                                    </div>
+                                    <button type="submit" id="btnGravar" class="btn btn-success" aria-hidden="true" title="Gravar" style="display:<?php echo $esconderBtnGravar ?>">
+                                        <span class="fa fa-floppy-o" ></span>
+                                    </button>
+                                    <button type="button" id="btnNovo" class="btn btn-primary" aria-hidden="true" title="Novo" style="display:<?php echo $esconderBtnGravar ?>">
+                                        <span class="fa fa-file-o" ></span>
+                                    </button>
+                                    <button type="button" id="btnVoltar" class="btn btn-default" aria-hidden="true" title="Voltar">
+                                        <span class="fa fa-backward " ></span>
+                                    </button>
+                                </footer>
                                 </form>                                            
                             </div>
                         </div>                                
@@ -349,7 +348,7 @@ include("inc/scripts.php");
     jsonTipologiaArray = JSON.parse($("#JsonTipologia").val());
 
     $(document).ready(function () {
-        
+
         $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
             _title: function (title) {
                 if (!this.options.title) {
@@ -361,21 +360,8 @@ include("inc/scripts.php");
         }));
 
         //Deixa o menu de escolha das datas em português.
-        $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );     
-        
-        //Máscara das datas 
-        $("input[id*='dataInicioConstrucao']").inputmask({
-        mask: ['99/99/9999'],
-        placeholder: "X",
-        keepStatic: true
-        });
-        
-        $("input[id*='dataEntregaChaves']").inputmask({
-        mask: ['99/99/9999'],
-        placeholder: "X",
-        keepStatic: true
-        });
-        
+        $.datepicker.setDefaults($.datepicker.regional[ "pt-BR" ]);
+
         $('#formBloco').validate({
             // Rules for form validation
             rules: {
@@ -455,21 +441,21 @@ include("inc/scripts.php");
             var valor = $("#dataInicioConstrucao").val();
             var validacao = validaData(valor);
 
-            if(validacao === false){   
-             $("#dataInicioConstrucao").val("");
+            if (validacao === false) {
+                $("#dataInicioConstrucao").val("");
             }
-            
+
             //Verifica se a dataInicioConstrucao > dataEntregaChaves
-            valor = formataData(valor); 
+            valor = formataData(valor);
             var entregaChaves = $("#dataEntregaChaves").val();
             entregaChaves = formataData(entregaChaves);
-        
-            if(valor > entregaChaves){
-               smartAlert("Erro", "A data de início da construção não pode ser maior do que a data da entrega das chaves!", "error");
-                $("#dataInicioConstrucao").val("");  
-            }        
-         
-        }); 
+
+            if (valor > entregaChaves) {
+                smartAlert("Erro", "A data de início da construção não pode ser maior do que a data da entrega das chaves!", "error");
+                $("#dataInicioConstrucao").val("");
+            }
+
+        });
 
         //Ao alterar a data da entrega das chaves, faça...
         $("#dataEntregaChaves").on("change", function () {
@@ -478,21 +464,21 @@ include("inc/scripts.php");
             var valor = $("#dataEntregaChaves").val();
             var validacao = validaData(valor);
 
-            if(validacao === false){ 
-             $("#dataEntregaChaves").val("");
+            if (validacao === false) {
+                $("#dataEntregaChaves").val("");
             }
-            
+
             //Verifica se a dataInicioConstrucao > dataEntregaChaves
-            valor = formataData(valor); 
+            valor = formataData(valor);
             var dataInicioConstrucao = $("#dataInicioConstrucao").val();
             dataInicioConstrucao = formataData(dataInicioConstrucao);
-        
-            if(valor < dataInicioConstrucao){
-               smartAlert("Erro", "A data de início da construção não pode ser maior do que a data da entrega das chaves!", "error");
-                $("#dataInicioConstrucao").val("");  
-            }        
-         
-        }); 
+
+            if (valor < dataInicioConstrucao) {
+                smartAlert("Erro", "A data de início da construção não pode ser maior do que a data da entrega das chaves!", "error");
+                $("#dataInicioConstrucao").val("");
+            }
+
+        });
 
         $("#btnExcluir").on("click", function () {
             var id = +$("#codigo").val();
@@ -560,34 +546,34 @@ include("inc/scripts.php");
 
         excluirBloco(id);
     }
-    
-    function validaTipologia(){
-        var existe = false; 
+
+    function validaTipologia() {
+        var existe = false;
         var tipologia = $('#tipologia').val();
         var sequencial = +$('#sequencialTipologia').val();
-        
+
         if (tipologia === '') {
             smartAlert("Erro", "Informe a tipologia.", "error");
             return false;
         }
-        
+
         for (i = jsonTipologiaArray.length - 1; i >= 0; i--) {
-            
+
             if ((jsonTipologiaArray[i].tipologia === tipologia) && (jsonTipologiaArray[i].sequencialTipologia !== sequencial)) {
                 existe = true;
                 break;
             }
-            
+
         }
-        
+
         if (existe === true) {
             smartAlert("Erro", "A tipologia já foi cadastrada.", "error");
             return false;
         }
-        
+
         return true;
     }
-    
+
     function processDataTipologia(node) {
         var fieldId = node.getAttribute ? node.getAttribute('id') : '';
         var fieldName = node.getAttribute ? node.getAttribute('name') : '';
@@ -618,17 +604,17 @@ include("inc/scripts.php");
             gravaBloco(id, empreendimento, nome, natureza, estagioObra, dataInicioConstrucao, dataEntregaChaves, observacao);
         }
     }
-    
-    //Ações dos botões de Tipologia
-        $('#btnAddTipologia').on("click", function () {
-            if (validaTipologia() === true){
-            addTipologia();
-            }
-        });
 
-        $('#btnRemoverTipologia').on("click", function () {
-            excluirTipologia();
-        });
+    //Ações dos botões de Tipologia
+    $('#btnAddTipologia').on("click", function () {
+        if (validaTipologia() === true) {
+            addTipologia();
+        }
+    });
+
+    $('#btnRemoverTipologia').on("click", function () {
+        excluirTipologia();
+    });
 
     // '+' de Tipologia
     function addTipologia() {
@@ -664,7 +650,7 @@ include("inc/scripts.php");
         fillTableTipologia();
         clearFormTipologia();
     }
-    
+
     function excluirTipologia() {
         var arrSequencial = [];
         $('#tableTipologia input[type=checkbox]:checked').each(function () {
@@ -727,6 +713,6 @@ include("inc/scripts.php");
 
         }
     }
-     
+
 
 </script>
